@@ -75,7 +75,7 @@ layout: post
                   <div class="box-footer">
                       <div class="row">
                           <div class="col-xs-6">
-                              <input class="btn btn-block btn-default btn-lg" id="answer"/>
+                              <input class="btn btn-block btn-default btn-lg" id="answer" placeholder="Type your answer here"/>
                               <button type="button" class="btn btn-block btn-default btn-lg answerChoice">Check Answer</button>
                           </div>
                       </div>
@@ -136,6 +136,7 @@ $(document).ready(function () {
   });
   nextProblem();
   $('#answer').selectOnFocus();
+  $('#answer').focus();
 });
 
 var evaluateAnswer = function() {
@@ -169,7 +170,6 @@ var nextProblem = function() {
   if(selectedPrblem) {
     console.log(selectedPrblem.display);
     $problem.text(selectedPrblem.displayProblem());
-    //showChoices(selectedPrblem);
   } else {
     console.log('Level complete - next level ' + (CurrentLevel.Instance().id + 1));
     $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! ' + CurrentLevel.Instance().type + ' ' + CurrentLevel.Instance().id + ' Completed');
