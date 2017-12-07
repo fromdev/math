@@ -133,6 +133,7 @@ $(document).ready(function () {
   $("#nextLevel").click(function(){
     CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
     nextProblem();
+    $('#answer').show();
   });
   nextProblem();
   $('#answer').selectOnFocus();
@@ -178,6 +179,7 @@ var nextProblem = function() {
     $(".answerChoice").hide();
     $("#nextLevel").html("Go To Next " + CurrentLevel.Instance().type);
     $("#nextLevel").show();
+    $('#answer').hide();
   }
 };
 
