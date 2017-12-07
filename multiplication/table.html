@@ -1,5 +1,5 @@
 ---
-title: Math Multiplication Practice Online : Level 1
+title: Practice Math Multiplication Tables Online
 layout: post
 ---
 <html>
@@ -8,7 +8,7 @@ layout: post
     <title>{{ page.title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is open source collection of onlinemath tools for everyone to practice and learn." />
+    <meta name="description" content="This is open source  multiplication tool for everyone to practice and learn multiplication." />
     <meta name="keywords" content="online,tool,math,multiplication,practice,opensource" />
 
     {% include theme-css %}
@@ -123,16 +123,8 @@ var checkLevelOverride = function() {
   var testByTable = parseInt(url.searchParams.get("t"));
   if(testByTable && Number.isInteger(testByTable) && testByTable > 0) {
     Levels.TABLE.id = testByTable;
-    return Levels.TABLE;
   }
-  var skipToLevel = parseInt(url.searchParams.get("l"));
-  var cLInstance;
-  if(skipToLevel && Number.isInteger(skipToLevel) && skipToLevel > 0) {
-    cLInstance = Levels.findLevel(skipToLevel);
-  } else {
-    cLInstance = CurrentLevel.Instance();
-  }
-  return cLInstance;
+  return Levels.TABLE;
 };
 
 CurrentLevel.initialize(checkLevelOverride());

@@ -1,5 +1,5 @@
 ---
-title: Math Multiplication Practice Online : Level 1
+title: Practice Math Multiplication Tables Online
 layout: post
 ---
 <html>
@@ -8,7 +8,7 @@ layout: post
     <title>{{ page.title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is open source multiplication tools that gives it in a challenging game format with points for correct answers." />
+    <meta name="description" content="This is open source  multiplication tool for everyone to practice and learn multiplication." />
     <meta name="keywords" content="online,tool,math,multiplication,practice,opensource" />
 
     {% include theme-css %}
@@ -75,14 +75,7 @@ layout: post
                   <div class="box-footer">
                       <div class="row">
                           <div class="col-xs-4">
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice0">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice1">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice2">?</button>
-                          </div>
-                          <div class="col-xs-4" >
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice3">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice4">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice5">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice0">Check Answer</button>
                           </div>
                       </div>
                       <div class="row">
@@ -106,7 +99,7 @@ layout: post
 <script type="text/javascript" src="http://math.imustread.com/javascript/json2.js"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/fromdev-utils.js?v=2"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/MultiplicationProblem.js?v=12"></script>
-<script type="text/javascript" src="http://math.imustread.com/javascript/Levels.js?v=30"></script>
+<script type="text/javascript" src="http://math.imustread.com/javascript/Levels.js"></script>
 
 <script type="text/javascript">
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
@@ -120,15 +113,11 @@ var CurrentLevel = Levels.CurrentLevel;
 
 var checkLevelOverride = function() {
   var url = new URL(window.location.href);
-
-  var skipToLevel = parseInt(url.searchParams.get("l"));
-  var cLInstance;
-  if(skipToLevel && Number.isInteger(skipToLevel) && skipToLevel > 0) {
-    cLInstance = Levels.findLevel(skipToLevel);
-  } else {
-    cLInstance = CurrentLevel.Instance();
+  var testByTable = parseInt(url.searchParams.get("t"));
+  if(testByTable && Number.isInteger(testByTable) && testByTable > 0) {
+    Levels.TABLE.id = testByTable;
   }
-  return cLInstance;
+  return Levels.TABLE;
 };
 
 CurrentLevel.initialize(checkLevelOverride());
@@ -148,7 +137,7 @@ $(document).ready(function () {
 
 var evaluateAnswer = function() {
   var correctAnswer = selectedPrblem.answer();
-  var selectedAnswer = $(this).text();
+  var selectedAnswer = $("#answer").text();
   if(correctAnswer == selectedAnswer) {
     console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
     $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + CurrentLevel.Instance().points).show().delay(1000).fadeOut();
