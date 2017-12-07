@@ -153,6 +153,8 @@ var evaluateAnswer = function() {
     CurrentLevel.moveProblemToEnd();
   }
   nextProblem();
+  $("#answer").val('');
+  $('#answer').focus();
 };
 
 var rewardPoints = function() {
