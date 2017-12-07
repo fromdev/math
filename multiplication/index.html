@@ -135,12 +135,12 @@ $(document).ready(function () {
     nextProblem();
   });
   nextProblem();
-    $('#answer').selectOnFocus();
+  $('#answer').selectOnFocus();
 });
 
 var evaluateAnswer = function() {
   var correctAnswer = selectedPrblem.answer();
-  var selectedAnswer = $("#answer").text();
+  var selectedAnswer = $("#answer").val();
   if(correctAnswer == selectedAnswer) {
     console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
     $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + CurrentLevel.Instance().points).show().delay(1000).fadeOut();
