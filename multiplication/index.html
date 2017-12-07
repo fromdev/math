@@ -75,7 +75,7 @@ layout: post
                   <div class="box-footer">
                       <div class="row">
                           <div class="col-xs-4">
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice0">Check Answer</button>
+                              <input type="text" class="btn btn-block btn-default btn-lg answerChoice" value="Check Answer">
                           </div>
                       </div>
                       <div class="row">
@@ -166,34 +166,12 @@ var nextProblem = function() {
   if(selectedPrblem) {
     console.log(selectedPrblem.display);
     $problem.text(selectedPrblem.displayProblem());
-    showChoices(selectedPrblem);
   } else {
     console.log('Level complete - next level ' + (CurrentLevel.Instance().id + 1));
     $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! ' + CurrentLevel.Instance().type + ' ' + CurrentLevel.Instance().id + ' Completed');
     $(".answerChoice").hide();
     $("#nextLevel").html("Go To Next " + CurrentLevel.Instance().type);
     $("#nextLevel").show();
-  }
-};
-
-var showChoices = function(problem) {
-  var choices = ArrayUtils.shuffle(problem.choices());
-  if(choices) {
-    for(var i = 0; i < CurrentLevel.Instance().choicesGiven; i++) {
-      var ch = -1;
-      if(i < choices.length){
-        ch = choices[i];
-      }
-      var $ch = $("#choice" + i);
-      if($ch) {
-        if(ch >= 0) {
-          $ch.text(ch);
-        } else {
-          $ch.remove();
-        }
-      }
-    }
-
   }
 };
 
