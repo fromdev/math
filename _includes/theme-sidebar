@@ -14,6 +14,7 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
+                            <li><a href="multiplication/index.html"><i class="fa fa-circle-o text-aqua"></i> Practice</a></li>
                             <li><a href="multiplication/table.html"><i class="fa fa-circle-o text-aqua"></i> Tables</a></li>
                             <li><a href="multiplication/challenge.html"><i class="fa fa-circle-o text-aqua"></i> Challenge</a></li>
                             
