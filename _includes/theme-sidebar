@@ -14,9 +14,9 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="multiplication/index.html"><i class="fa fa-circle-o text-aqua"></i> Practice</a></li>
-                            <li><a href="multiplication/table.html"><i class="fa fa-circle-o text-aqua"></i> Tables</a></li>
-                            <li><a href="multiplication/challenge.html"><i class="fa fa-circle-o text-aqua"></i> Challenge</a></li>
+                            <li><a href="http://math.imustread.com/multiplication//index.html"><i class="fa fa-circle-o text-aqua"></i> Practice</a></li>
+                            <li><a href="http://math.imustread.com/multiplication//table.html"><i class="fa fa-circle-o text-aqua"></i> Tables</a></li>
+                            <li><a href="http://math.imustread.com/multiplication//challenge.html"><i class="fa fa-circle-o text-aqua"></i> Challenge</a></li>
                             
                         </ul>
                     </li>
@@ -29,7 +29,7 @@
             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="division/challenge.html"><i class="fa fa-circle-o text-red"></i> Challenge</a></li>
+                            <li><a href="http://math.imustread.com/division/challenge.html"><i class="fa fa-circle-o text-red"></i> Challenge</a></li>
 
                         </ul>
                     </li>
