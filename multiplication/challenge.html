@@ -31,8 +31,8 @@ layout: post
                   <!-- small box -->
                   <div class="small-box bg-aqua">
                     <div class="inner">
-                      <h3 id="totalPoints">0</h3>
-                      <p>Points</p>
+                      <h3 id="secondsLeft">60</h3>
+                      <p>Seconds</p>
                     </div>
                   </div>
                 </div>
@@ -110,6 +110,15 @@ layout: post
 
 <script type="text/javascript">
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
+
+var seconds = 60;
+var showCountDown = function() {
+    document.getElementById('secondsLeft').innerHTML = seconds;
+    if(seconds > 0) {
+        seconds = seconds - 1;
+        var t = setTimeout(showCountDown, 1000);
+    }
+};
 
 var showPoints = function () {
   var totalPoints = parseInt(StorageUtils.getItem("TOTAL_POINTS"));
@@ -208,6 +217,8 @@ var showChoices = function(problem) {
 
   }
 };
+
+
 
 </script>
 </html>
