@@ -133,7 +133,7 @@ $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
     $('.input').keypress(function (e) {
         if (e.which == 13) {
-            $('.answerChoice').click(e);
+            $('.answerChoice').trigger("click");
             return false;
         }
     });
