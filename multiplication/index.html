@@ -131,6 +131,12 @@ var $message = $("#message");
 var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
+    $('.input').keypress(function (e) {
+        if (e.which == 13) {
+            $('.answerChoice').click(e);
+            return false;
+        }
+    });
   $("#nextLevel").click(function(){
     CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
     nextProblem();
