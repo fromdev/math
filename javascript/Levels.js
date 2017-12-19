@@ -17,10 +17,13 @@ Levels.TABLE = {
 Levels.NextLevel = function(prevLevel) {
   var nxtLevel = Levels.ONE;
   if(prevLevel && prevLevel.type == Levels.TABLE.type) {
-    Levels.TABLE.id = Levels.TABLE.id + 1;
-    //re-initialize problems
-    Levels.TABLE.problems = [];
-    nxtLevel =  Levels.TABLE;
+      nxtLevel = (prevLevel) ? {
+          "id" : prevLevel.id + 1,
+          "choicesGiven":6,
+          "range" : {"start":prevLevel.range.start,"end":prevLevel.range.end },
+          "points" : prevLevel.points + 1,
+          "type" : prevLevel.type
+      } : Levels.TABLE;
   } else {
     nxtLevel = (prevLevel) ? {
       "id" : prevLevel.id + 1,
@@ -133,7 +136,7 @@ Levels.CurrentLevel = {
       StorageUtils.setItem(Levels.CurrentLevel.KEY,JSON.stringify(level));
     }
   },
-  removeLastProblem : function(problem) {
+  removeLastProblem : function() {
     var level = CurrentLevel.Instance();
     if(level.problems.length > 0) {
       level.problems.pop();
