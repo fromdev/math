@@ -141,6 +141,7 @@ $(document).ready(function () {
     CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
     nextProblem();
     $('#answer').show();
+    $('#answer').focus();
   });
   nextProblem();
   $('#answer').selectOnFocus();
