@@ -151,10 +151,9 @@ Levels.CurrentLevel = {
       StorageUtils.setItem(Levels.CurrentLevel.KEY,JSON.stringify(lvl));
       $("#totalPoints").html(Levels.CurrentLevel.Instance().TOTAL_POINTS);
   },
-    evaluateAnswer : function() {
+    evaluateAnswer : function(selectedAnswer) {
         var selectedPrblem = Levels.CurrentLevel.findNextProblem();
         var correctAnswer = selectedPrblem.answer();
-        var selectedAnswer = $("#answer").val();
         var $message = $("#message");
         if(correctAnswer == selectedAnswer) {
             console.log("correct answer - questions remaining " + Levels.CurrentLevel.Instance().problems.length);

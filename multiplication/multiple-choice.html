@@ -105,7 +105,7 @@ layout: post
 </body>
 <script type="text/javascript" src="http://math.imustread.com/javascript/json2.js"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/fromdev-utils.js?v=2"></script>
-<script type="text/javascript" src="http://math.imustread.com/javascript/MultiplicationProblem.js?v=13"></script>
+<script type="text/javascript" src="http://math.imustread.com/javascript/MultiplicationProblem.js?v=14"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/Levels.js"></script>
 
 <script type="text/javascript">
@@ -127,7 +127,10 @@ var checkLevelOverride = function() {
 CurrentLevel.initialize(checkLevelOverride());
 
 $(document).ready(function () {
-  $(".answerChoice").click(CurrentLevel.evaluateAnswer);
+  $(".answerChoice").click(function(){
+      var selectedAnswer = $(this).text();
+      CurrentLevel.evaluateAnswer(selectedAnswer);
+  });
   $("#nextLevel").click(function(){
     CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
       CurrentLevel.nextProblem();
