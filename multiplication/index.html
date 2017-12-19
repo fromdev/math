@@ -104,7 +104,7 @@ layout: post
 <script type="text/javascript" src="http://math.imustread.com/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 
 <script type="text/javascript">
-    var configKey = "CURRENT_TABLE";
+    Levels.CurrentLevel.KEY = "CURRENT_TABLE";
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
 
 var showPoints = function () {
@@ -121,7 +121,7 @@ var checkLevelOverride = function() {
     Levels.TABLE.id = testByTable;
     return Levels.TABLE;
   }
-  return CurrentLevel.Instance(configKey);
+  return CurrentLevel.Instance();
 };
 
 CurrentLevel.initialize(checkLevelOverride(),configKey);
@@ -139,7 +139,7 @@ $(document).ready(function () {
         }
     });
   $("#nextLevel").click(function(){
-    CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()),configKey);
+    CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
     nextProblem();
     $('#answer').show();
   });
