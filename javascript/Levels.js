@@ -145,7 +145,9 @@ Levels.CurrentLevel = {
     }
   },
   rewardPoints : function() {
-      Levels.CurrentLevel.TOTAL_POINTS += Levels.CurrentLevel.Instance().points;
-      StorageUtils.setItem(Levels.CurrentLevel.KEY,JSON.stringify(CurrentLevel.Instance()));
+    var lvl = Levels.CurrentLevel.Instance();
+      lvl.TOTAL_POINTS = (lvl.TOTAL_POINTS) ? lvl.TOTAL_POINTS : 0;
+      lvl.TOTAL_POINTS += lvl.points;
+      StorageUtils.setItem(Levels.CurrentLevel.KEY,JSON.stringify(lvl));
   }
 };
