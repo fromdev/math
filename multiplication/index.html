@@ -121,7 +121,8 @@ var checkLevelOverride = function() {
     Levels.TABLE.id = testByTable;
     return Levels.TABLE;
   }
-  return CurrentLevel.Instance();
+  var l = CurrentLevel.Instance();
+  return (l) ? l : Levels.TABLE;
 };
 
 CurrentLevel.initialize(checkLevelOverride());
