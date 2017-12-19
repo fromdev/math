@@ -105,17 +105,14 @@ layout: post
 </body>
 <script type="text/javascript" src="http://math.imustread.com/javascript/json2.js"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/fromdev-utils.js?v=2"></script>
-<script type="text/javascript" src="http://math.imustread.com/javascript/MultiplicationProblem.js?v=12"></script>
+<script type="text/javascript" src="http://math.imustread.com/javascript/MultiplicationProblem.js?v=13"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/Levels.js"></script>
 
 <script type="text/javascript">
+    Levels.CurrentLevel.KEY = "MULTIPLICATION.MULTIPLE.CHOICE";
+    Levels.CurrentLevel.MULTIPLE_CHOICE = true;
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
 
-var showPoints = function () {
-  var totalPoints = parseInt(StorageUtils.getItem("TOTAL_POINTS"));
-  totalPoints = (Number.isInteger(totalPoints)) ? totalPoints : 0;
-  $("#totalPoints").html(totalPoints);
-};
 var CurrentLevel = Levels.CurrentLevel;
 
 var checkLevelOverride = function() {
@@ -129,81 +126,15 @@ var checkLevelOverride = function() {
 
 CurrentLevel.initialize(checkLevelOverride());
 
-//cache jquery objects for page
-var $problem = $("#problem");
-var $message = $("#message");
-var selectedPrblem;
 $(document).ready(function () {
-  $(".answerChoice").click(evaluateAnswer);
+  $(".answerChoice").click(CurrentLevel.evaluateAnswer);
   $("#nextLevel").click(function(){
     CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
-    nextProblem();
+      CurrentLevel.nextProblem();
   });
-  nextProblem();
+    CurrentLevel.nextProblem();
   $('#multiplication-category').addClass('active');
 });
-
-var evaluateAnswer = function() {
-  var correctAnswer = selectedPrblem.answer();
-  var selectedAnswer = $(this).text();
-  if(correctAnswer == selectedAnswer) {
-    console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
-    $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + CurrentLevel.Instance().points).show().delay(1000).fadeOut();
-    rewardPoints();
-    CurrentLevel.removeLastProblem();
-  } else {
-    console.log("incorrect answer - adding back");
-    $message.html('<i class="fa  fa-times text-red"></i>').show().delay(1000).fadeOut();;
-    CurrentLevel.moveProblemToEnd();
-  }
-  nextProblem();
-};
-
-var rewardPoints = function() {
-  var totalPoints = parseInt(StorageUtils.getItem("TOTAL_POINTS"));
-  if(!totalPoints || !Number.isInteger(totalPoints)) {
-    totalPoints = 0;
-  }
-  totalPoints += CurrentLevel.Instance().points;
-  StorageUtils.setItem("TOTAL_POINTS",totalPoints);
-  showPoints();
-};
-
-var nextProblem = function() {
-  selectedPrblem = CurrentLevel.findNextProblem();
-  if(selectedPrblem) {
-    console.log(selectedPrblem.display);
-    $problem.text(selectedPrblem.displayProblem());
-    showChoices(selectedPrblem);
-  } else {
-    console.log('Level complete - next level ' + (CurrentLevel.Instance().id + 1));
-    $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! ' + CurrentLevel.Instance().type + ' ' + CurrentLevel.Instance().id + ' Completed');
-    $(".answerChoice").hide();
-    $("#nextLevel").html("Go To Next " + CurrentLevel.Instance().type);
-    $("#nextLevel").show();
-  }
-};
-
-var showChoices = function(problem) {
-  var choices = ArrayUtils.shuffle(problem.choices());
-  if(choices) {
-    for(var i = 0; i < CurrentLevel.Instance().choicesGiven; i++) {
-      var ch = -1;
-      if(i < choices.length){
-        ch = choices[i];
-      }
-      var $ch = $("#choice" + i);
-      if($ch) {
-        if(ch >= 0) {
-          $ch.text(ch);
-        } else {
-          $ch.remove();
-        }
-      }
-    }
-
-  }
-};
 
 </script>
 </html>

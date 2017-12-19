@@ -46,7 +46,8 @@ Levels.findLevel = function(id) {
 };
 
 Levels.CurrentLevel = {
-  KEY:"CURRENT_LEVEL",
+    KEY:"CURRENT_LEVEL",
+    MULTIPLE_CHOICE : false,
     ALL_PROBLEMS : [],
   Instance : function() {
     return StorageUtils.getJSON(Levels.CurrentLevel.KEY);
@@ -175,6 +176,7 @@ Levels.CurrentLevel = {
         if(selectedPrblem) {
             console.log(selectedPrblem.display);
             $problem.text(selectedPrblem.displayProblem());
+            Levels.CurrentLevel.showChoices();
         } else {
             console.log('Level complete - next level ' + (Levels.CurrentLevel.Instance().id + 1));
             $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! ' + Levels.CurrentLevel.Instance().type + ' ' + Levels.CurrentLevel.Instance().id + ' Completed');
@@ -182,6 +184,29 @@ Levels.CurrentLevel = {
             $("#nextLevel").html("Go To Next " + Levels.CurrentLevel.Instance().type);
             $("#nextLevel").show();
             $('#answer').hide();
+        }
+    },
+    showChoices : function(selectedPrblem) {
+        if (Levels.CurrentLevel.MULTIPLE_CHOICE) {
+            var selectedPrblem = Levels.CurrentLevel.findNextProblem();
+            var choices = ArrayUtils.shuffle(selectedPrblem.choices());
+            if (choices) {
+                for (var i = 0; i < CurrentLevel.Instance().choicesGiven; i++) {
+                    var ch = -1;
+                    if (i < choices.length) {
+                        ch = choices[i];
+                    }
+                    var $ch = $("#choice" + i);
+                    if ($ch) {
+                        if (ch >= 0) {
+                            $ch.text(ch);
+                        } else {
+                            $ch.remove();
+                        }
+                    }
+                }
+
+            }
         }
     }
 };
