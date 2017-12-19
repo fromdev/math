@@ -42,8 +42,9 @@ Levels.findLevel = function(id) {
 };
 
 Levels.CurrentLevel = {
-  Instance : function() {
-    return StorageUtils.getJSON("CURRENT_LEVEL");
+  Instance : function(v) {
+    var key = (v) ? v : "CURRENT_LEVEL";
+    return StorageUtils.getJSON(key);
   },
   ALL_PROBLEMS : [],
   initAllProblems : function() {
@@ -96,7 +97,7 @@ Levels.CurrentLevel = {
     }
     return problems;
   },
-  initialize : function(level) {
+  initialize : function(level, key) {
     //default start with level one
     if(!level || !level.id) {
       level = Levels.ONE;
@@ -106,7 +107,8 @@ Levels.CurrentLevel = {
         level.problems = ArrayUtils.shuffle(Levels.CurrentLevel.generateProblems(level));
       }
       var lvlStr = JSON.stringify(level);
-      StorageUtils.setItem("CURRENT_LEVEL",lvlStr);
+      var k = key ? key : "CURRENT_LEVEL";
+      StorageUtils.setItem(k,lvlStr);
       $("#levelHeading").text(level.id);
       $("#levelMessage").text((level.type) ? level.type : "Level");
       $(".answerChoice").show();
