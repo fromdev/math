@@ -110,10 +110,6 @@ Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]
 
 var CurrentLevel = Levels.CurrentLevel;
 
-    var showPoints = function () {
-        $("#totalPoints").html(Levels.CurrentLevel.Instance().TOTAL_POINTS);
-    };
-
 var checkLevelOverride = function() {
   var url = new URL(window.location.href);
   var testByTable = parseInt(url.searchParams.get("t"));
@@ -132,7 +128,7 @@ var $problem = $("#problem");
 var $message = $("#message");
 var selectedPrblem;
 $(document).ready(function () {
-  $(".answerChoice").click(evaluateAnswer);
+  $(".answerChoice").click(CurrentLevel.evaluateAnswer);
     $('#answer').keypress(function (e) {
         if (e.which == 13) {
             $('.answerChoice').trigger("click");
@@ -150,29 +146,6 @@ $(document).ready(function () {
   $('#answer').focus();
   $('#multiplication-category').addClass('active');
 });
-
-var evaluateAnswer = function() {
-  var correctAnswer = selectedPrblem.answer();
-  var selectedAnswer = $("#answer").val();
-  if(correctAnswer == selectedAnswer) {
-    console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
-    $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + CurrentLevel.Instance().points).show().delay(1000).fadeOut();
-    rewardPoints();
-    CurrentLevel.removeLastProblem();
-  } else {
-    console.log("incorrect answer - adding back");
-    $message.html('<i class="fa  fa-times text-red"></i>').show().delay(1000).fadeOut();;
-    CurrentLevel.moveProblemToEnd();
-  }
-  nextProblem();
-  $("#answer").val('');
-  $('#answer').focus();
-};
-
-var rewardPoints = function() {
-    CurrentLevel.rewardPoints();
-    showPoints();
-};
 
 var nextProblem = function() {
   selectedPrblem = CurrentLevel.findNextProblem();

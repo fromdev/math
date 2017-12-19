@@ -117,7 +117,7 @@ Levels.CurrentLevel = {
       $("#levelMessage").text((level.type) ? level.type : "Level");
       $(".answerChoice").show();
       $("#nextLevel").hide();
-      showPoints();
+      $("#totalPoints").html(Levels.CurrentLevel.Instance().TOTAL_POINTS);
       console.log('Level initialized ' + lvlStr);
     }
   },
@@ -148,5 +148,21 @@ Levels.CurrentLevel = {
       lvl.TOTAL_POINTS = (lvl.TOTAL_POINTS) ? lvl.TOTAL_POINTS : 0;
       lvl.TOTAL_POINTS += lvl.points;
       StorageUtils.setItem(Levels.CurrentLevel.KEY,JSON.stringify(lvl));
+      $("#totalPoints").html(Levels.CurrentLevel.Instance().TOTAL_POINTS);
+  },
+    evaluateAnswer : function() {
+        var selectedPrblem = CurrentLevel.findNextProblem();
+        var correctAnswer = selectedPrblem.answer();
+        var selectedAnswer = $("#answer").val();
+        if(correctAnswer == selectedAnswer) {
+            console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
+            $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + CurrentLevel.Instance().points).show().delay(1000).fadeOut();
+            CurrentLevel.rewardPoints();
+            CurrentLevel.removeLastProblem();
+        } else {
+            console.log("incorrect answer - adding back");
+            $message.html('<i class="fa  fa-times text-red"></i>').show().delay(1000).fadeOut();;
+            CurrentLevel.moveProblemToEnd();
+        }
   }
 };
