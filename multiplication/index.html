@@ -131,7 +131,7 @@ var $message = $("#message");
 var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
-    $('.input').keypress(function (e) {
+    $('#answer').keypress(function (e) {
         if (e.which == 13) {
             $('.answerChoice').trigger("click");
             return false;
