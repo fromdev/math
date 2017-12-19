@@ -43,10 +43,11 @@ Levels.findLevel = function(id) {
 
 Levels.CurrentLevel = {
   KEY:"CURRENT_LEVEL",
+    ALL_PROBLEMS : [],
+    TOTAL_POINTS : 0,
   Instance : function() {
     return StorageUtils.getJSON(Levels.CurrentLevel.KEY);
   },
-  ALL_PROBLEMS : [],
   initAllProblems : function() {
     var allProblems = Levels.CurrentLevel.ALL_PROBLEMS;
     if(allProblems.length == 0) {
@@ -138,5 +139,9 @@ Levels.CurrentLevel = {
       level.problems.pop();
       StorageUtils.setItem(Levels.CurrentLevel.KEY,JSON.stringify(level));
     }
+  },
+  rewardPoints : function() {
+      Levels.CurrentLevel.TOTAL_POINTS += CurrentLevel.Instance().points;
+      StorageUtils.setItem(Levels.CurrentLevel.KEY,JSON.stringify(CurrentLevel.Instance()));
   }
 };

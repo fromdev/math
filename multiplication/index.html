@@ -100,7 +100,7 @@ layout: post
 <script type="text/javascript" src="http://math.imustread.com/javascript/json2.js"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/fromdev-utils.js?v=2"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/MultiplicationProblem.js?v=12"></script>
-<script type="text/javascript" src="http://math.imustread.com/javascript/Levels.js?v=1"></script>
+<script type="text/javascript" src="http://math.imustread.com/javascript/Levels.js?v=2"></script>
 <script type="text/javascript" src="http://math.imustread.com/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 
 <script type="text/javascript">
@@ -108,9 +108,7 @@ layout: post
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
 
 var showPoints = function () {
-  var totalPoints = parseInt(StorageUtils.getItem("TOTAL_POINTS"));
-  totalPoints = (Number.isInteger(totalPoints)) ? totalPoints : 0;
-  $("#totalPoints").html(totalPoints);
+  $("#totalPoints").html(CurrentLevel.Instance().TOTAL_POINTS);
 };
 var CurrentLevel = Levels.CurrentLevel;
 
@@ -169,13 +167,8 @@ var evaluateAnswer = function() {
 };
 
 var rewardPoints = function() {
-  var totalPoints = parseInt(StorageUtils.getItem("TOTAL_POINTS"));
-  if(!totalPoints || !Number.isInteger(totalPoints)) {
-    totalPoints = 0;
-  }
-  totalPoints += CurrentLevel.Instance().points;
-  StorageUtils.setItem("TOTAL_POINTS",totalPoints);
-  showPoints();
+    CurrentLevel.Instance().rewardPoints();
+    showPoints();
 };
 
 var nextProblem = function() {
