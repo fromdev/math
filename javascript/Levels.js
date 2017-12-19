@@ -154,6 +154,7 @@ Levels.CurrentLevel = {
         var selectedPrblem = Levels.CurrentLevel.findNextProblem();
         var correctAnswer = selectedPrblem.answer();
         var selectedAnswer = $("#answer").val();
+        var $message = $("#message");
         if(correctAnswer == selectedAnswer) {
             console.log("correct answer - questions remaining " + Levels.CurrentLevel.Instance().problems.length);
             $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + Levels.CurrentLevel.Instance().points).show().delay(1000).fadeOut();
