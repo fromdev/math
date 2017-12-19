@@ -166,6 +166,8 @@ Levels.CurrentLevel = {
             Levels.CurrentLevel.moveProblemToEnd();
         }
         Levels.CurrentLevel.nextProblem();
+        $("#answer").val('');
+        $('#answer').focus();
   },
     nextProblem : function() {
         var selectedPrblem = Levels.CurrentLevel.findNextProblem();
