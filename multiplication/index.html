@@ -100,17 +100,19 @@ layout: post
 <script type="text/javascript" src="http://math.imustread.com/javascript/json2.js"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/fromdev-utils.js?v=2"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/MultiplicationProblem.js?v=12"></script>
-<script type="text/javascript" src="http://math.imustread.com/javascript/Levels.js?v=4"></script>
+<script type="text/javascript" src="http://math.imustread.com/javascript/Levels.js?v=5"></script>
 <script type="text/javascript" src="http://math.imustread.com/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 
 <script type="text/javascript">
     Levels.CurrentLevel.KEY = "CURRENT_TABLE";
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
 
-var showPoints = function () {
-  $("#totalPoints").html(CurrentLevel.TOTAL_POINTS);
-};
+
 var CurrentLevel = Levels.CurrentLevel;
+
+    var showPoints = function () {
+        $("#totalPoints").html(Levels.CurrentLevel.TOTAL_POINTS);
+    };
 
 var checkLevelOverride = function() {
   var url = new URL(window.location.href);
