@@ -42,9 +42,10 @@ Levels.findLevel = function(id) {
 };
 
 Levels.CurrentLevel = {
+  KEY:"CURRENT_LEVEL",
   Instance : function(v) {
-    var key = (v) ? v : "CURRENT_LEVEL";
-    return StorageUtils.getJSON(key);
+    Levels.CurrentLevel.KEY = (v) ? v : "CURRENT_LEVEL";
+    return StorageUtils.getJSON(Levels.CurrentLevel.KEY);
   },
   ALL_PROBLEMS : [],
   initAllProblems : function() {
@@ -118,14 +119,14 @@ Levels.CurrentLevel = {
     }
   },
   findNextProblem : function() {
-     var level = CurrentLevel.Instance();
+     var level = CurrentLevel.Instance(Levels.CurrentLevel.KEY);
      if(level.problems.length > 0) {
        var problem = level.problems.last();
        return new MultiplicationProblem(problem.first, problem.second);
      }
   },
   moveProblemToEnd : function() {
-    var level = CurrentLevel.Instance();
+    var level = CurrentLevel.Instance(Levels.CurrentLevel.KEY);
     if(level.problems.length > 0) {
       var problem = level.problems.pop();
       level.problems.unshift(problem);
@@ -133,7 +134,7 @@ Levels.CurrentLevel = {
     }
   },
   removeLastProblem : function(problem) {
-    var level = CurrentLevel.Instance();
+    var level = CurrentLevel.Instance(Levels.CurrentLevel.KEY);
     if(level.problems.length > 0) {
       level.problems.pop();
       StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
