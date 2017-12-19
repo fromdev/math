@@ -22,7 +22,8 @@ Levels.NextLevel = function(prevLevel) {
           "choicesGiven":6,
           "range" : {"start":prevLevel.range.start,"end":prevLevel.range.end },
           "points" : prevLevel.points + 1,
-          "type" : prevLevel.type
+          "type" : prevLevel.type,
+          "problems":[]
       } : Levels.TABLE;
   } else {
     nxtLevel = (prevLevel) ? {
@@ -73,9 +74,9 @@ Levels.CurrentLevel = {
   initTableProblems : function(level) {
     var tableProblems = [];
     if(Levels.TABLE.type == level.type) {
-      for(var i = Levels.TABLE.range.start; i < Levels.TABLE.range.end;i++){
-        tableProblems.push(new MultiplicationProblem(Levels.TABLE.id,i));
-        tableProblems.push(new MultiplicationProblem(i,Levels.TABLE.id));
+      for(var i = level.range.start; i < level.range.end;i++){
+        tableProblems.push(new MultiplicationProblem(level.id,i));
+        tableProblems.push(new MultiplicationProblem(i,level.id));
       }
     }
     return tableProblems;
