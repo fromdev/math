@@ -151,18 +151,18 @@ Levels.CurrentLevel = {
       $("#totalPoints").html(Levels.CurrentLevel.Instance().TOTAL_POINTS);
   },
     evaluateAnswer : function() {
-        var selectedPrblem = CurrentLevel.findNextProblem();
+        var selectedPrblem = Levels.CurrentLevel.findNextProblem();
         var correctAnswer = selectedPrblem.answer();
         var selectedAnswer = $("#answer").val();
         if(correctAnswer == selectedAnswer) {
-            console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
-            $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + CurrentLevel.Instance().points).show().delay(1000).fadeOut();
-            CurrentLevel.rewardPoints();
-            CurrentLevel.removeLastProblem();
+            console.log("correct answer - questions remaining " + Levels.CurrentLevel.Instance().problems.length);
+            $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + Levels.CurrentLevel.Instance().points).show().delay(1000).fadeOut();
+            Levels.CurrentLevel.rewardPoints();
+            Levels.CurrentLevel.removeLastProblem();
         } else {
             console.log("incorrect answer - adding back");
             $message.html('<i class="fa  fa-times text-red"></i>').show().delay(1000).fadeOut();;
-            CurrentLevel.moveProblemToEnd();
+            Levels.CurrentLevel.moveProblemToEnd();
         }
   }
 };
