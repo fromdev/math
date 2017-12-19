@@ -100,7 +100,7 @@ layout: post
 <script type="text/javascript" src="http://math.imustread.com/javascript/json2.js"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/fromdev-utils.js?v=2"></script>
 <script type="text/javascript" src="http://math.imustread.com/javascript/MultiplicationProblem.js?v=12"></script>
-<script type="text/javascript" src="http://math.imustread.com/javascript/Levels.js?v=10"></script>
+<script type="text/javascript" src="http://math.imustread.com/javascript/Levels.js?v=11"></script>
 <script type="text/javascript" src="http://math.imustread.com/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 
 <script type="text/javascript">
@@ -123,9 +123,6 @@ var checkLevelOverride = function() {
 
 CurrentLevel.initialize(checkLevelOverride());
 
-//cache jquery objects for page
-var $problem = $("#problem");
-var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(CurrentLevel.evaluateAnswer);
     $('#answer').keypress(function (e) {
@@ -145,21 +142,6 @@ $(document).ready(function () {
   $('#answer').focus();
   $('#multiplication-category').addClass('active');
 });
-
-var nextProblem = function() {
-  selectedPrblem = CurrentLevel.findNextProblem();
-  if(selectedPrblem) {
-    console.log(selectedPrblem.display);
-    $problem.text(selectedPrblem.displayProblem());
-  } else {
-    console.log('Level complete - next level ' + (CurrentLevel.Instance().id + 1));
-    $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! ' + CurrentLevel.Instance().type + ' ' + CurrentLevel.Instance().id + ' Completed');
-    $(".answerChoice").hide();
-    $("#nextLevel").html("Go To Next " + CurrentLevel.Instance().type);
-    $("#nextLevel").show();
-    $('#answer').hide();
-  }
-};
 
 </script>
 </html>

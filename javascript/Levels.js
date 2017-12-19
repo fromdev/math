@@ -165,5 +165,21 @@ Levels.CurrentLevel = {
             $message.html('<i class="fa  fa-times text-red"></i>').show().delay(1000).fadeOut();;
             Levels.CurrentLevel.moveProblemToEnd();
         }
-  }
+        Levels.CurrentLevel.nextProblem();
+  },
+    nextProblem : function() {
+        var selectedPrblem = Levels.CurrentLevel.findNextProblem();
+        var $problem = $("#problem");
+        if(selectedPrblem) {
+            console.log(selectedPrblem.display);
+            $problem.text(selectedPrblem.displayProblem());
+        } else {
+            console.log('Level complete - next level ' + (Levels.CurrentLevel.Instance().id + 1));
+            $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! ' + Levels.CurrentLevel.Instance().type + ' ' + Levels.CurrentLevel.Instance().id + ' Completed');
+            $(".answerChoice").hide();
+            $("#nextLevel").html("Go To Next " + Levels.CurrentLevel.Instance().type);
+            $("#nextLevel").show();
+            $('#answer').hide();
+        }
+    }
 };
