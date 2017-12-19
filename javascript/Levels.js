@@ -97,7 +97,7 @@ Levels.CurrentLevel = {
     }
     return problems;
   },
-  initialize : function(level, key) {
+  initialize : function(level) {
     //default start with level one
     if(!level || !level.id) {
       level = Levels.ONE;
@@ -107,8 +107,7 @@ Levels.CurrentLevel = {
         level.problems = ArrayUtils.shuffle(Levels.CurrentLevel.generateProblems(level));
       }
       var lvlStr = JSON.stringify(level);
-      var k = key ? key : "CURRENT_LEVEL";
-      StorageUtils.setItem(k,lvlStr);
+      StorageUtils.setItem(Levels.CurrentLevel.KEY,lvlStr);
       $("#levelHeading").text(level.id);
       $("#levelMessage").text((level.type) ? level.type : "Level");
       $(".answerChoice").show();
