@@ -108,7 +108,7 @@ layout: post
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
 
 var showPoints = function () {
-  $("#totalPoints").html(CurrentLevel.Instance().TOTAL_POINTS);
+  $("#totalPoints").html(CurrentLevel.TOTAL_POINTS);
 };
 var CurrentLevel = Levels.CurrentLevel;
 
@@ -167,7 +167,7 @@ var evaluateAnswer = function() {
 };
 
 var rewardPoints = function() {
-    CurrentLevel.Instance().rewardPoints();
+    CurrentLevel.rewardPoints();
     showPoints();
 };
 
