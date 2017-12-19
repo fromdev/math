@@ -48,7 +48,6 @@ Levels.findLevel = function(id) {
 Levels.CurrentLevel = {
   KEY:"CURRENT_LEVEL",
     ALL_PROBLEMS : [],
-    TOTAL_POINTS : 0,
   Instance : function() {
     return StorageUtils.getJSON(Levels.CurrentLevel.KEY);
   },
