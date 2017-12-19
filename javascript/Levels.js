@@ -106,6 +106,7 @@ Levels.CurrentLevel = {
       if(!level.problems || level.problems.length == 0) {
         level.problems = ArrayUtils.shuffle(Levels.CurrentLevel.generateProblems(level));
       }
+      level.KEY = Levels.CurrentLevel.KEY;
       var lvlStr = JSON.stringify(level);
       StorageUtils.setItem(Levels.CurrentLevel.KEY,lvlStr);
       $("#levelHeading").text(level.id);
