@@ -129,14 +129,14 @@ Levels.CurrentLevel = {
     if(level.problems.length > 0) {
       var problem = level.problems.pop();
       level.problems.unshift(problem);
-      StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
+      StorageUtils.setItem(Levels.CurrentLevel.KEY,JSON.stringify(level));
     }
   },
   removeLastProblem : function(problem) {
     var level = CurrentLevel.Instance();
     if(level.problems.length > 0) {
       level.problems.pop();
-      StorageUtils.setItem("CURRENT_LEVEL",JSON.stringify(level));
+      StorageUtils.setItem(Levels.CurrentLevel.KEY,JSON.stringify(level));
     }
   }
 };
