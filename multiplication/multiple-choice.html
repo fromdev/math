@@ -120,8 +120,10 @@ var checkLevelOverride = function() {
   var testByTable = parseInt(url.searchParams.get("t"));
   if(testByTable && Number.isInteger(testByTable) && testByTable > 0) {
     Levels.TABLE.id = testByTable;
+    return Levels.TABLE;
   }
-  return Levels.TABLE;
+    var l = CurrentLevel.Instance();
+    return (l) ? l : Levels.TABLE;
 };
 
 CurrentLevel.initialize(checkLevelOverride());
