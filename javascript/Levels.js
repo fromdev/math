@@ -118,7 +118,7 @@ Levels.CurrentLevel = {
       $("#levelMessage").text((level.type) ? level.type : "Level");
       $(".answerChoice").show();
       $("#nextLevel").hide();
-      $("#totalPoints").html(Levels.CurrentLevel.Instance().TOTAL_POINTS);
+      $("#totalPoints").html(level.TOTAL_POINTS);
       console.log('Level initialized ' + lvlStr);
     }
   },
