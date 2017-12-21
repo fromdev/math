@@ -130,6 +130,9 @@ Utils.logutil = {
         if (debug) {
             console.log(msg);
         }
+        if(onScreenDebug){
+            $('#debug').append(msg);
+        }
     }
 };
 
