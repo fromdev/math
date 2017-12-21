@@ -127,10 +127,12 @@ Utils.randomutil = {
 
 Utils.logutil = {
     log : function(msg) {
-        if (debug) {
+        var d = (debug) ? debug : false;
+        if (d) {
             console.log(msg);
         }
-        if(onScreenDebug){
+        var osd = (onScreenDebug) ? onScreenDebug : false;
+        if(osd){
             $('#debug').append(msg);
         }
     }
