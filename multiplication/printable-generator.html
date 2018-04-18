@@ -157,11 +157,11 @@ var createRowHtml = function(columns) {
 };
 var print = function(problems) {
   if(!problems) return;
-  var columnCount = 4;
+  var columnCount = 5;
   var columns = "";
   var rows = "";
   for (var i = 0; i < problems.length; i++) {
-    if(i % 4 == 0) {
+    if(i % columnCount == 0) {
       //row
       rows += createRowHtml(columns);
       columns = "";
