@@ -53,10 +53,10 @@ layout: post
                   <div class="box-footer">
                       <div class="row">
                           <div class="col-xs-6">
-                              <input type="number" class="btn btn-block btn-default btn-lg" id="first.start" placeholder="First Number Start Range" value="10"/>
-                              <input type="number" class="btn btn-block btn-default btn-lg" id="first.end" placeholder="First Number End Range" value="99"/>
-                              <input type="number" class="btn btn-block btn-default btn-lg" id="second.start" placeholder="Second Number Starting Range" value="10"/>
-                              <input type="number" class="btn btn-block btn-default btn-lg" id="second.end" placeholder="Second Number Starting Range" value="99"/>
+                              <input type="number" class="btn btn-block btn-default btn-lg" id="firstStart" placeholder="First Number Start Range" value="10"/>
+                              <input type="number" class="btn btn-block btn-default btn-lg" id="firstEnd" placeholder="First Number End Range" value="99"/>
+                              <input type="number" class="btn btn-block btn-default btn-lg" id="secondStart" placeholder="Second Number Starting Range" value="10"/>
+                              <input type="number" class="btn btn-block btn-default btn-lg" id="secondEnd" placeholder="Second Number Starting Range" value="99"/>
                               <button type="button" class="btn btn-block btn-default btn-lg" id="generate">Generate Printable Problems</button>
                           </div>
                       </div>
@@ -90,7 +90,7 @@ layout: post
 <script type="text/javascript">
     var onScreenDebug = false;
     var debug = false;
-    var range = {"firstStart" : 10, "firstEnd" : 99, "secondStart" : 10, "secondEnd" : 99};
+    var range;
 
 var generate = function(range, count) {
   if(!count) count = 100;
@@ -114,10 +114,10 @@ var print = function(problems) {
 
 $(document).ready(function () {
   $("#generate").click(function(){
-      range.firstStart = $("#first.start").val();
-      range.firstEnd = $("#first.end").val();
-      range.secondStart = $("#second.start").val();
-      range.secondEnd = $("#second.end").val();
+      range.firstStart = $("#firstStart").val();
+      range.firstEnd = $("#firstEnd").val();
+      range.secondStart = $("#secondStart").val();
+      range.secondEnd = $("#secondEnd").val();
       var problems = generate(range, 10);
       print(problems);
   });
