@@ -167,7 +167,7 @@ var print = function(problems) {
       columns = "";
     } else {
       //columns
-      columns += createColumnHtml(problems[i].displayProblem())
+      columns += createColumnHtml(problems[i]);
     }
     $("#printableSection").html(rows);
   }
