@@ -90,7 +90,7 @@ layout: post
 <script type="text/javascript">
     var onScreenDebug = false;
     var debug = false;
-    var range;
+
 
 var generate = function(range, count) {
   if(!count) count = 100;
@@ -114,6 +114,7 @@ var print = function(problems) {
 
 $(document).ready(function () {
   $("#generate").click(function(){
+      var range = {};
       range.firstStart = $("#firstStart").val();
       range.firstEnd = $("#firstEnd").val();
       range.secondStart = $("#secondStart").val();
