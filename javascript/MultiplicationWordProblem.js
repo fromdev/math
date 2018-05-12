@@ -5,7 +5,11 @@ class MultiplicationWordProblem {
     var firstToken = "-FIRST-";
     var secondToken = "-SECOND-";
     if(!problemStatement) {
-      problemStatement = "blah blah " + firstToken + " multiplied with  " + secondToken + " blah blah.";
+      if(multiplicationWordProblemsList) {
+        problemStatement = multiplicationWordProblemsList[Math.floor(Math.random() * multiplicationWordProblemsList.length)];
+      } else {
+        problemStatement = "blah blah " + firstToken + " multiplied with  " + secondToken + " blah blah.";
+      }
     }
     problemStatement = problemStatement.replace(firstToken, first);
     problemStatement = problemStatement.replace(secondToken, second);
