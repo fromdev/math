@@ -16,7 +16,7 @@ layout: post
     <style type="text/css">
 @media print{
   body{ background-color:#FFFFFF; background-image:none; color:#000000;}
-  .main-sidebar, .main-footer, #debug, #inputForm { display:none;}
+  .main-sidebar, .main-footer, #debug, #inputForm, #printableHeading { display:none;}
   #printableSection{ width:100%;}
 }
 </style>
@@ -78,9 +78,14 @@ layout: post
             </section>
             <!-- /.content -->
             <section class="content">
+              <div class="box box-info">
+                <div class="box-header with-border" id="printableHeading">
+                    <h1 class="box-title">Click Generate Printable Button Above And Use Browser Print Button To Print This Page</h1>
+                </div>
                 <table id="printableSection">
 
                 </table>
+              </div>
             </section>
             <div id="debug">
                 ....
