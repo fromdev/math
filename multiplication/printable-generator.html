@@ -15,7 +15,7 @@ layout: post
     {% include ie-fixes %}
     <style type="text/css">
 @media print{
-  body{ background-color:#FFFFFF; background-image:none; color:#000000;font-size: 120%;}
+  body{ background-color:#FFFFFF; background-image:none; color:#000000;}
   #debug{ display:none;}
   #inputForm{ display:none;}
   #printableSection{ width:100%;}
@@ -117,8 +117,8 @@ var generate = function(range, count) {
   return problems;
 };
 var createColumnHtml = function(problem) {
-  return "<td><div class=\"col-md-1\">\r\n<div class=\"box box-info box-solid\">\r\n\r\n<div class=\"box-body\" style=\"text-align:right\">\r\n<p>"
-  + problem.first + "<\/p>\r\n<p>X "
+  return "<td><div class=\"col-md-1\">\r\n<div class=\"box box-info box-solid\">\r\n\r\n<div class=\"box-body\" style=\"text-align:right\">\r\n<h4>"
+  + problem.first + "<\/h4>\r\n<p>X "
   + problem.second + "<\/p>\r\n<hr>\r\n<\/div>\r\n<\/div>\r\n<\/div></td>";
 };
 
