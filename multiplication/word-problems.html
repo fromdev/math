@@ -110,7 +110,7 @@ layout: post
 <script type="text/javascript">
     var onScreenDebug = false;
     var debug = false;
-    Levels.CurrentLevel.KEY = "MULTIPLICATION.WORD.PRACTICE";
+    Levels.CurrentLevel.KEY = "MULTIPLICATION.WORD.PROBLEM.PRACTICE";
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
 
 
@@ -124,7 +124,7 @@ var checkLevelOverride = function() {
     return Levels.TABLE;
   }
   var l = CurrentLevel.Instance();
-  return (l) ? l : Levels.TABLE;
+  return (l) ? l : Levels.ONE;
 };
 
 CurrentLevel.initialize(checkLevelOverride());
