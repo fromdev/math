@@ -1,0 +1,156 @@
+---
+title: Practice Math Multiplication Word Problems Online
+layout: post
+---
+<html>
+<head>
+   {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is open source  multiplication practice tool for everyone to practice and learn multiplication word problems." />
+    <meta name="keywords" content="online,tool,math,multiplication,practice,word,problems,opensource" />
+
+    {% include theme-css %}
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+{% include theme-header %}
+{% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="row">
+                <div class="col-lg-4 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h3 id="totalPoints">0</h3>
+                      <p>Points</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h3 id="levelHeading">1</h3>
+                      <p id="levelMessage">Level</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+              <div class="box box-success">
+                  <div class="box-header with-border">
+                      <h1 class="box-title">Solve Multiplication Problem</h1>
+                  </div>
+                  <!-- /.box-header -->
+                  <!-- form start -->
+                  <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-4">
+                          <form role="form">
+                              <div class="form-group">
+                                  <h2 id="problem"></h2>
+                              </div>
+                          </form>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="form-group">
+                            <h2 id="message"></h2>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <!-- /.box-body -->
+                  <div class="box-footer">
+                      <div class="row">
+                          <div class="col-xs-6">
+                              <input type="number" class="btn btn-block btn-default btn-lg" id="answer" placeholder="Type your answer here"/>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice">Check Answer</button>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <button type="button" class="btn btn-block btn-success btn-lg" id="nextLevel" style="display:none;">Go To Next Level</button>
+                        </div>
+                      </div>
+                  </div>
+                  <!-- /.box-footer -->
+              </div>
+                <div id="debug">
+                    ....
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+{% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+{% include theme-bottom-js %}
+
+</body>
+<script type="text/javascript" src="http://math.imustread.com/javascript/json2.js"></script>
+<script type="text/javascript" src="http://math.imustread.com/javascript/fromdev-utils.js?v=5"></script>
+<script type="text/javascript" src="http://math.imustread.com/javascript/MultiplicationProblem.js?v=12"></script>
+<script type="text/javascript" src="http://math.imustread.com/javascript/Levels.js?v=15"></script>
+<script type="text/javascript" src="http://math.imustread.com/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+
+<script type="text/javascript">
+    var onScreenDebug = false;
+    var debug = false;
+    Levels.CurrentLevel.KEY = "MULTIPLICATION.PRACTICE";
+Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
+
+
+var CurrentLevel = Levels.CurrentLevel;
+
+var checkLevelOverride = function() {
+  var url = new URL(window.location.href);
+  var testByTable = parseInt(url.searchParams.get("t"));
+  if(testByTable && Number.isInteger(testByTable) && testByTable > 0) {
+    Levels.TABLE.id = testByTable;
+    return Levels.TABLE;
+  }
+  var l = CurrentLevel.Instance();
+  return (l) ? l : Levels.TABLE;
+};
+
+CurrentLevel.initialize(checkLevelOverride());
+
+$(document).ready(function () {
+  $(".answerChoice").click(function(){
+      var selectedAnswer = $("#answer").val();
+      CurrentLevel.evaluateAnswer(selectedAnswer);
+  });
+    $('#answer').keypress(function (e) {
+        if (e.which == 13) {
+            $('.answerChoice').trigger("click");
+            return false;
+        }
+    });
+  $("#nextLevel").click(function(){
+    CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
+    CurrentLevel.nextProblem();
+    $('#answer').show();
+    $('#answer').focus();
+  });
+
+  CurrentLevel.nextProblem();
+  $('#answer').selectOnFocus();
+  $('#answer').focus();
+  $('#multiplication-category').addClass('active');
+});
+
+</script>
+</html>
