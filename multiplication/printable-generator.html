@@ -13,6 +13,14 @@ layout: post
 
     {% include theme-css %}
     {% include ie-fixes %}
+    <style type="text/css">
+@media print{
+  body{ background-color:#FFFFFF; background-image:none; color:#000000 }
+  #debug{ display:none;}
+  #inputForm{ display:none;}
+  #printableSection{ width:100%;}
+}
+</style>
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
@@ -26,7 +34,7 @@ layout: post
         <div class="content-wrapper">
 
             <!-- Main content -->
-            <section class="content">
+            <section class="content" id="inputForm">
               <div class="box box-success">
                   <div class="box-header with-border">
                       <h1 class="box-title">Generate Multiplication Problems Printable</h1>
