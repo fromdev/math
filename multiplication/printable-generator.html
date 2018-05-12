@@ -81,7 +81,7 @@ layout: post
             <section class="content">
                 <table id="printableSection">
 
-                </table>  
+                </table>
             </section>
             <div id="debug">
                 ....
@@ -117,7 +117,7 @@ var generate = function(range, count) {
   return problems;
 };
 var createColumnHtml = function(problem) {
-  return "<td><div class=\"col-md-1\">\r\n<div class=\"box box-info\">\r\n\r\n<div class=\"box-body\" style=\"text-align:right\">\r\n<p>"
+  return "<td><div class=\"col-md-1\">\r\n<div class=\"box box-info box-solid\">\r\n\r\n<div class=\"box-body\" style=\"text-align:right\">\r\n<p>"
   + problem.first + "<\/p>\r\n<p>X "
   + problem.second + "<\/p>\r\n<hr>\r\n<\/div>\r\n<\/div>\r\n<\/div></td>";
 };
@@ -127,7 +127,7 @@ var createRowHtml = function(columns) {
 };
 var print = function(problems) {
   if(!problems) return;
-  var columnCount = 10;
+  var columnCount = 8;
   var columns = "";
   var rows = "";
   for (var i = 0; i < problems.length; i++) {
