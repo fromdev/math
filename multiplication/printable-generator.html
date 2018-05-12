@@ -79,47 +79,9 @@ layout: post
             </section>
             <!-- /.content -->
             <section class="content">
-              <div class="box">
-                  <div class="box-body" id="printableSection">
+                <table id="printableSection">
 
-                      <div class="row">
-                      <div class="col-md-1">
-                          <div class="box box-info">
-                              <!-- /.box-header -->
-                              <div class="box-body" style="text-align:right">
-                                  <p>23</p>
-                                 <p>X 45</p>
-                                  <hr>
-                              </div>
-                              <!-- /.box-body -->
-                          </div>
-                      </div>
-                      <div class="col-md-1">
-                          <div class="box box-info">
-                              <!-- /.box-header -->
-                              <div class="box-body" style="text-align:right">
-                                  <p>23</p>
-                                 <p>X 45</p>
-                                  <hr>
-                              </div>
-                              <!-- /.box-body -->
-                          </div>
-                      </div>
-                      <div class="col-md-1">
-                          <div class="box box-info">
-                              <!-- /.box-header -->
-                              <div class="box-body" style="text-align:right">
-                                  <p>23</p>
-                                 <p>X 45</p>
-                                  <hr>
-                              </div>
-                              <!-- /.box-body -->
-                          </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- /.box-footer -->
-              </div>
+                </table>  
             </section>
             <div id="debug">
                 ....
@@ -155,13 +117,13 @@ var generate = function(range, count) {
   return problems;
 };
 var createColumnHtml = function(problem) {
-  return "<div class=\"col-md-1\">\r\n<div class=\"box box-info\">\r\n\r\n<div class=\"box-body\" style=\"text-align:right\">\r\n<p>"
+  return "<td><div class=\"col-md-1\">\r\n<div class=\"box box-info\">\r\n\r\n<div class=\"box-body\" style=\"text-align:right\">\r\n<p>"
   + problem.first + "<\/p>\r\n<p>X "
-  + problem.second + "<\/p>\r\n<hr>\r\n<\/div>\r\n<\/div>\r\n<\/div>";
+  + problem.second + "<\/p>\r\n<hr>\r\n<\/div>\r\n<\/div>\r\n<\/div></td>";
 };
 
 var createRowHtml = function(columns) {
-  return "<div class=\"row\">" + columns + "<\/div>";
+  return "<tr><div class=\"row\">" + columns + "<\/div></tr>";
 };
 var print = function(problems) {
   if(!problems) return;
