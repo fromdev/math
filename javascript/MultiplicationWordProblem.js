@@ -12,12 +12,6 @@ class MultiplicationWordProblem {
     this.problemStatement = problemStatement;
   }
 
-  get display() {
-    return this.multiplicationProblem.display();
-  }
-  get allChoices() {
-    return this.choices();
-  }
   displayProblem() {
     return this.problemStatement;
   }

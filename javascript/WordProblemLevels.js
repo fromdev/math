@@ -173,7 +173,7 @@ Levels.CurrentLevel = {
         var selectedPrblem = Levels.CurrentLevel.findNextProblem();
         var $problem = $("#problem");
         if(selectedPrblem) {
-            LogUtils.log(selectedPrblem.display);
+            LogUtils.log(selectedPrblem.displayProblem());
             $problem.text(selectedPrblem.displayProblem());
             Levels.CurrentLevel.showChoices();
         } else {
