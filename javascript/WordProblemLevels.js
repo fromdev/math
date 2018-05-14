@@ -125,7 +125,7 @@ Levels.CurrentLevel = {
   findNextProblem : function() {
      var level = CurrentLevel.Instance();
      if(level.problems.length > 0) {
-       var problem = level.problems.last();
+       var problem = level.problems.last().multiplicationProblem;
        return new MultiplicationWordProblem(problem.first, problem.second);
      }
   },
