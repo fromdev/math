@@ -5,13 +5,13 @@ class MultiplicationWordProblem {
     var tokens = [
       {"key" : "-FIRST-", "value" : first},
       {"key" : "-SECOND-", "value" : second},
-      {"key" : "-NAME1-", "value" : getRandomItem(namesList)},
+      {"key" : "-NAME1-", "value" : ArrayUtils.getRandomItem(namesList)},
     ];
     var firstToken = "-FIRST-";
     var secondToken = "-SECOND-";
     if(!problemStatement) {
       if(multiplicationWordProblemsList) {
-        problemStatement = getRandomItem(multiplicationWordProblemsList);
+        problemStatement = ArrayUtils.getRandomItem(multiplicationWordProblemsList);
         tokens.forEach(function(element) {
   //        console.log(element);
           problemStatement = problemStatement.replace(element.key, element.value);
