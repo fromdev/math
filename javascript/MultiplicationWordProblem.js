@@ -6,6 +6,7 @@ class MultiplicationWordProblem {
       {"key" : "-FIRST-", "value" : first},
       {"key" : "-SECOND-", "value" : second},
       {"key" : "-NAME1-", "value" : ArrayUtils.getRandomItem(namesList)},
+      {"key" : "-NAME2-", "value" : ArrayUtils.getRandomItem(namesList)}
     ];
     var firstToken = "-FIRST-";
     var secondToken = "-SECOND-";
