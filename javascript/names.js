@@ -1,0 +1,20 @@
+var namesList = [
+  "Sophia",
+  "Sarthak",
+  "Shivali",
+  "Aravind",
+  "Joe",
+  "Emma",
+  "Isabella",
+  "Jacob",
+  "Ella",
+  "Victoria",
+  "Hannah",
+  "Maya",
+  "Uma",
+  "Ethan",
+  "Cameron",
+  "James",
+  "Julian",
+  "Vedant"
+];
