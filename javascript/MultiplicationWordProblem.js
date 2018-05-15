@@ -15,7 +15,7 @@ class MultiplicationWordProblem {
         problemStatement = ArrayUtils.getRandomItem(multiplicationWordProblemsList);
         tokens.forEach(function(element) {
   //        console.log(element);
-          problemStatement = problemStatement.replace(element.key, element.value);
+          problemStatement = problemStatement.replace(new RegExp(element.key, 'g'), element.value);
         });
       } else {
         problemStatement = "blah blah " + firstToken + " multiplied with  " + secondToken + " blah blah.";
