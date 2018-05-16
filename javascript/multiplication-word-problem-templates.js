@@ -7,5 +7,7 @@ var multiplicationWordProblemsList = [
   "-NAME1- is making -FIRST- jars of banana flavored peanut butter. -NAME1- wants to put -FIRST- drops of banana flavoring in each jar. How many total drops of banana flavoring will -NAME1- need to make?",
   "-NAME1- goes out to lunch with -SECOND- friends. Each person orders the $-FIRST- lunch special. -NAME1- agrees to pay the bill. How much will she have to pay ?",
   "There were a total of -FIRST- baseball games a month. The season is played for -SECOND- months. How many baseball games are in the seasons ?",
-  "A restaurant sold -FIRST- hamburgers every day for -SECOND- Days. How many hamburgers were sold after -SECOND- Days?"
+  "A restaurant sold -FIRST- hamburgers every day for -SECOND- Days. How many hamburgers were sold after -SECOND- Days?",
+  "-NAME1- was at the beach for -SECOND- days and found -FIRST- seashells every day. How many seashells did -NAME1- find during the beach trip ? ",
+  "-NAME1- goes fishing with Jessica. -NAME1- catches -FIRST- trout. Jessica catches -SECOND- times as many trout as Fred. How many trout did Jessica catch ?"
 ];
