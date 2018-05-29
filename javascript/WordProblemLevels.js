@@ -56,9 +56,9 @@ Levels.CurrentLevel = {
     var allProblems = Levels.CurrentLevel.ALL_PROBLEMS;
     if(allProblems.length == 0) {
       var allProblemRangeEnd = 26;
-      for(var i = 0; i < allProblemRangeEnd; i++) {
-        for(var j = 0; j < allProblemRangeEnd; j++) {
-          if(i < 2 || j < 2) {
+      for(var i = 2; i < allProblemRangeEnd; i++) {
+        for(var j = 2; j < allProblemRangeEnd; j++) {
+          if(i < 4 || j < 4) {
             //for lower number put only 1 out of 5
             if(RandomUtils.getRandomInt(1,100) % 5 == 0) {
               allProblems.push(new MultiplicationWordProblem(i,j));
