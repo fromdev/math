@@ -3,7 +3,7 @@ var Levels = Levels || {};
 Levels.ONE = {
   "id" : 1,
   "choicesGiven":6,
-  "range" : {"start":0,"end":9},
+  "range" : {"start":5,"end":25},
   "points" : 5,
   "type" : "Level"
 };
