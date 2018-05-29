@@ -119,12 +119,6 @@ Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]
 var CurrentLevel = Levels.CurrentLevel;
 
 var checkLevelOverride = function() {
-  var url = new URL(window.location.href);
-  var testByTable = parseInt(url.searchParams.get("t"));
-  if(testByTable && Number.isInteger(testByTable) && testByTable > 0) {
-    Levels.TABLE.id = testByTable;
-    return Levels.TABLE;
-  }
   var l = CurrentLevel.Instance();
   return (l) ? l : Levels.ONE;
 };
