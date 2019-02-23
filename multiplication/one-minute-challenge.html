@@ -119,6 +119,7 @@ Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]
 var report = {"correctAnswerCount" : 0, "wrongAnwerCount" : 0, "points" : 0};
 var showSummary = function() {
   console.log("Challenge Time up");
+  $(".answerChoice").hide();
   $problem.html('Time is up! Check your score. ' + JSON.stringify(report));
   $("#startchallenge").show();
 };
