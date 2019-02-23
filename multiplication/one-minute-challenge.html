@@ -51,7 +51,7 @@ layout: post
             <section class="content">
               <div class="box box-success">
                   <div class="box-header with-border">
-                      <h1 class="box-title">Solve Multiplication Problem</h1>
+                      <h1 class="box-title">Multiplication Problem 1 Minute Challenge</h1>
                   </div>
                   <!-- /.box-header -->
                   <!-- form start -->
@@ -88,6 +88,7 @@ layout: post
                       <div class="row">
                         <div class="col-xs-6">
                           <button type="button" class="btn btn-block btn-success btn-lg" id="nextLevel" style="display:none;">Go To Next Level</button>
+                          <button type="button" class="btn btn-block btn-success btn-lg" id="startchallenge">Start Challenge</button>
                         </div>
                       </div>
                   </div>
@@ -116,12 +117,18 @@ layout: post
     var debug = true;
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
 
+var showSummary = function() {
+  $problem.html('Time is up! Check your score.');
+  $("#startchallenge").show();
+};
 var seconds = 60;
 var showCountDown = function() {
     document.getElementById('secondsLeft').innerHTML = seconds;
     if(seconds > 0) {
         seconds = seconds - 1;
         var t = setTimeout(showCountDown, 1000);
+    } else {
+
     }
 };
 
@@ -157,8 +164,12 @@ $(document).ready(function () {
     CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
     nextProblem();
   });
-  nextProblem();
-  showCountDown();
+  $("#startchallenge").click(function(){
+    $("#startchallenge").hide();
+    nextProblem();
+    showCountDown();
+  });
+
   $('#multiplication-category').addClass('active');
 });
 
