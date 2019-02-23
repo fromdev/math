@@ -116,9 +116,10 @@ layout: post
     var onScreenDebug = true;
     var debug = true;
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
-
+var report = {"correctAnswerCount" : 0, "wrongAnwerCount" : 0, "points" : 0};
 var showSummary = function() {
-  $problem.html('Time is up! Check your score.');
+  console.log("Challenge Time up");
+  $problem.html('Time is up! Check your score. ' + JSON.stringify(report));
   $("#startchallenge").show();
 };
 var seconds = 60;
@@ -166,6 +167,9 @@ $(document).ready(function () {
   });
   $("#startchallenge").click(function(){
     $("#startchallenge").hide();
+    report.correctAnswerCount = 0;
+    report.wrongAnwerCount = 0;
+    report.points = 0;
     nextProblem();
     showCountDown();
   });
@@ -180,9 +184,11 @@ var evaluateAnswer = function() {
     console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
     $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + CurrentLevel.Instance().points).show().delay(1000).fadeOut();
     rewardPoints();
+    report.correctAnswerCount++;
     CurrentLevel.removeLastProblem();
   } else {
     console.log("incorrect answer - adding back");
+    report.wrongAnswerCount++;
     $message.html('<i class="fa  fa-times text-red"></i>').show().delay(1000).fadeOut();;
     CurrentLevel.moveProblemToEnd();
   }
@@ -195,6 +201,7 @@ var rewardPoints = function() {
     totalPoints = 0;
   }
   totalPoints += CurrentLevel.Instance().points;
+  report.points += CurrentLevel.Instance().points;
   StorageUtils.setItem("TOTAL_POINTS",totalPoints);
   showPoints();
 };
