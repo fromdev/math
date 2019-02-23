@@ -203,6 +203,7 @@ var nextProblem = function() {
   selectedPrblem = CurrentLevel.findNextProblem();
   if(selectedPrblem) {
     console.log(selectedPrblem.display);
+    $(".answerChoice").show();
     $problem.text(selectedPrblem.displayProblem());
     showChoices(selectedPrblem);
   } else {
