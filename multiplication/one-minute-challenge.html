@@ -75,14 +75,14 @@ layout: post
                   <div class="box-footer">
                       <div class="row">
                           <div class="col-xs-4">
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice0">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice1">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice2">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice0" style="display:none;">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice1" style="display:none;">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice2" style="display:none;">?</button>
                           </div>
                           <div class="col-xs-4" >
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice3">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice4">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice5">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice3" style="display:none;">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice4" style="display:none;">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice5" style="display:none;">?</button>
                           </div>
                       </div>
                       <div class="row">
@@ -173,8 +173,6 @@ var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
   $(".challengeButtons").click(startchallenge);
-
-  $(".answerChoice").hide();
   $('#multiplication-category').addClass('active');
 });
 
