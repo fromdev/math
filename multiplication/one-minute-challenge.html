@@ -94,6 +94,16 @@ layout: post
                               <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice5" >?</button>
                           </div>
                       </div>
+                      <div class="row report" style="display:none;" >
+                          <div class="col-xs-4">
+                              <h2>Correct Answers</h2>
+                              <p id="correctAnswerCount"></p>
+                          </div>
+                          <div class="col-xs-4" >
+                              <h2>Wrong Answers</h2>
+                              <p id="wrongAnswerCount"></p>
+                          </div>
+                      </div>
                       <div class="row">
                         <div class="col-xs-6">
                           <button type="button" class="btn btn-block btn-success btn-lg" id="nextLevel" style="display:none;">Go To Next Level</button>
@@ -131,6 +141,9 @@ var showSummary = function() {
   console.log("Challenge Time up");
   $(".answerChoiceRow").hide();
   $problem.html('Time is up! Check your score. ' + JSON.stringify(report));
+  $("#correctAnswerCount").html(report.correctAnswerCount);
+  $("#wrongAnswerCount").html(report.wrongAnswerCount);
+  $(".report").show();
   $("#startchallengeAgain").show();
 };
 var seconds = 60;
@@ -173,6 +186,7 @@ var checkLevelOverride = function() {
 
 var startchallenge = function(){
   $(".challengeButtons").hide();
+  $(".report").hide();
   report.correctAnswerCount = 0;
   report.wrongAnswerCount = 0;
   report.points = 0;
