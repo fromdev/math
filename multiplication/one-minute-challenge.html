@@ -89,6 +89,7 @@ layout: post
                         <div class="col-xs-6">
                           <button type="button" class="btn btn-block btn-success btn-lg" id="nextLevel" style="display:none;">Go To Next Level</button>
                           <button type="button" class="btn btn-block btn-success btn-lg" id="startchallenge">Start Challenge</button>
+                          <button type="button" class="btn btn-block btn-success btn-lg" id="startchallengeAgain" style="display:none;">Start Challenge Again</button>
                         </div>
                       </div>
                   </div>
@@ -121,7 +122,7 @@ var showSummary = function() {
   console.log("Challenge Time up");
   $(".answerChoice").hide();
   $problem.html('Time is up! Check your score. ' + JSON.stringify(report));
-  $("#startchallenge").show();
+  $("#startchallengeAgain").show();
 };
 var seconds = 60;
 var showCountDown = function() {
@@ -174,6 +175,9 @@ $(document).ready(function () {
     nextProblem();
     showCountDown();
   });
+  $('#startchallengeAgain').click(function() {
+    location.reload();
+});
   $(".answerChoice").hide();
   $('#multiplication-category').addClass('active');
 });
