@@ -201,7 +201,8 @@ var $message = $("#message");
 var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
-  $(".challengeButtons").click(startchallenge);
+  $("#startchallengeAgain").click(startchallenge);
+  $("#startchallenge").click(startchallenge);
   showPoints();
   showHighestScore();
   $('#multiplication-category').addClass('active');
