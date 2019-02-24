@@ -163,10 +163,6 @@ var $message = $("#message");
 var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
-  $("#nextLevel").click(function(){
-    CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
-    nextProblem();
-  });
   $("#startchallenge").click(function(){
     $("#startchallenge").hide();
     report.correctAnswerCount = 0;
@@ -220,10 +216,8 @@ var nextProblem = function() {
     showChoices(selectedPrblem);
   } else {
     console.log('Level complete - next level ' + (CurrentLevel.Instance().id + 1));
-    $problem.html('<i class="fa fa-trophy text-yellow"></i>'+ ' Awesome! ' + CurrentLevel.Instance().type + ' ' + CurrentLevel.Instance().id + ' Completed');
-    $(".answerChoice").hide();
-    $("#nextLevel").html("Go To Next " + CurrentLevel.Instance().type);
-    $("#nextLevel").show();
+    CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
+    nextProblem();
   }
 };
 
