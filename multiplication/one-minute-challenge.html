@@ -27,7 +27,7 @@ layout: post
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="row">
-                <div class="col-lg-4 col-xs-6">
+                <div class="col-lg-2 col-xs-6">
                   <!-- small box -->
                   <div class="small-box bg-aqua">
                     <div class="inner">
@@ -36,12 +36,21 @@ layout: post
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4 col-xs-6">
+                <div class="col-lg-2 col-xs-6">
                   <!-- small box -->
                   <div class="small-box bg-aqua">
                     <div class="inner">
                       <h3 id="totalPoints">1</h3>
                       <p id="pointsMessage">Points</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h3 id="highestScore">0</h3>
+                      <p id="highestScoreMessage">Highest Score</p>
                     </div>
                   </div>
                 </div>
@@ -117,7 +126,7 @@ layout: post
     var onScreenDebug = false;
     var debug = true;
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
-var report = {"correctAnswerCount" : 0, "wrongAnswerCount" : 0, "points" : 0};
+var report = {"correctAnswerCount" : 0, "wrongAnswerCount" : 0};
 var showSummary = function() {
   console.log("Challenge Time up");
   $(".answerChoiceRow").hide();
@@ -139,6 +148,12 @@ var showPoints = function () {
   var totalPoints = parseInt(StorageUtils.getItem("TOTAL_POINTS"));
   totalPoints = (Number.isInteger(totalPoints)) ? totalPoints : 0;
   $("#totalPoints").html(totalPoints);
+};
+
+var showHighestScore = function () {
+  var highestScore = parseInt(StorageUtils.getItem("HIGHEST_SCORE"));
+  highestScore = (Number.isInteger(totalPoints)) ? highestScore : 0;
+  $("#highestScore").html(highestScore);
 };
 var CurrentLevel = Levels.CurrentLevel;
 
@@ -185,6 +200,7 @@ var evaluateAnswer = function() {
     $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + CurrentLevel.Instance().points).show().delay(1000).fadeOut();
     rewardPoints();
     report.correctAnswerCount++;
+    checkScore(report);
     CurrentLevel.removeLastProblem();
   } else {
     console.log("incorrect answer - adding back");
@@ -201,9 +217,18 @@ var rewardPoints = function() {
     totalPoints = 0;
   }
   totalPoints += CurrentLevel.Instance().points;
-  report.points += CurrentLevel.Instance().points;
   StorageUtils.setItem("TOTAL_POINTS",totalPoints);
   showPoints();
+};
+
+var checkScore = function(report) {
+  var highestScore = parseInt(StorageUtils.getItem("HIGHEST_SCORE"));
+  if(!highestScore || !Number.isInteger(highestScore) || report.correctAnswerCount > highestScore) {
+    highestScore = report.correctAnswerCount;
+  }
+
+  StorageUtils.setItem("HIGHEST_SCORE",highestScore);
+  showHighestScore();
 };
 
 var nextProblem = function() {
