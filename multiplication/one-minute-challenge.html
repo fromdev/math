@@ -150,10 +150,8 @@ var showPoints = function () {
   $("#totalPoints").html(totalPoints);
 };
 
-var showHighestScore = function () {
-  var highestScore = parseInt(StorageUtils.getItem("HIGHEST_SCORE"));
-  highestScore = (Number.isInteger(totalPoints)) ? highestScore : 0;
-  $("#highestScore").html(highestScore);
+var showHighestScore = function (score) {
+  $("#highestScore").html(score);
 };
 
 var CurrentLevel = Levels.CurrentLevel;
@@ -229,7 +227,7 @@ var checkScore = function(report) {
   }
 
   StorageUtils.setItem("HIGHEST_SCORE",highestScore);
-  showHighestScore();
+  showHighestScore(highestScore);
 };
 
 var nextProblem = function() {
