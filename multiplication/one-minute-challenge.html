@@ -73,16 +73,16 @@ layout: post
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer">
-                      <div class="row">
+                      <div class="row answerChoiceRow" style="display:none;" >
                           <div class="col-xs-4">
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice0" style="display:none;">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice1" style="display:none;">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice2" style="display:none;">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice0" >?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice1" >?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice2" >?</button>
                           </div>
                           <div class="col-xs-4" >
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice3" style="display:none;">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice4" style="display:none;">?</button>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice5" style="display:none;">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice3" >?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice4" >?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice5" >?</button>
                           </div>
                       </div>
                       <div class="row">
@@ -120,7 +120,7 @@ Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]
 var report = {"correctAnswerCount" : 0, "wrongAnswerCount" : 0, "points" : 0};
 var showSummary = function() {
   console.log("Challenge Time up");
-  $(".answerChoice").hide();
+  $(".answerChoiceRow").hide();
   $problem.html('Time is up! Check your score. ' + JSON.stringify(report));
   $("#startchallengeAgain").show();
 };
@@ -209,7 +209,7 @@ var nextProblem = function() {
   selectedPrblem = CurrentLevel.findNextProblem();
   if(selectedPrblem) {
     console.log(selectedPrblem.display);
-    $(".answerChoice").show();
+    $(".answerChoiceRow").show();
     $problem.text(selectedPrblem.displayProblem());
     showChoices(selectedPrblem);
   } else {
