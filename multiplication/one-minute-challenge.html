@@ -140,7 +140,7 @@ var report = {"correctAnswerCount" : 0, "wrongAnswerCount" : 0};
 var showSummary = function() {
   console.log("Challenge Time up");
   $(".answerChoiceRow").hide();
-  $problem.html('Time is up! Check your score. ' + JSON.stringify(report));
+  $problem.html('Time is up! Check your score. ');
   $("#correctAnswerCount").html(report.correctAnswerCount);
   $("#wrongAnswerCount").html(report.wrongAnswerCount);
   $(".report").show();
