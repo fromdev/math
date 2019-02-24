@@ -172,7 +172,7 @@ var showHighestScore = function () {
   highestScore = (Number.isInteger(highestScore)) ? highestScore : 0;
   $("#highestScore").html(highestScore);
   if(report.correctAnswerCount == highestScore) {
-    $("#highestScore").effect( "shake", { direction: "up", times: 3, distance: 5}, 1000 );
+    $("#highestScore").effect( "shake", { direction: "up", times: 2, distance: 5}, 800 );
   }
 };
 
