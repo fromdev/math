@@ -88,8 +88,8 @@ layout: post
                       <div class="row">
                         <div class="col-xs-6">
                           <button type="button" class="btn btn-block btn-success btn-lg" id="nextLevel" style="display:none;">Go To Next Level</button>
-                          <button type="button" class="btn btn-block btn-success btn-lg" id="startchallenge">Start Challenge</button>
-                          <button type="button" class="btn btn-block btn-success btn-lg" id="startchallengeAgain" style="display:none;">Start Challenge Again</button>
+                          <button type="button" class="btn btn-block btn-success btn-lg challengeButtons" id="startchallenge">Start Challenge</button>
+                          <button type="button" class="btn btn-block btn-success btn-lg challengeButtons" id="startchallengeAgain" style="display:none;">Start Challenge Again</button>
                         </div>
                       </div>
                   </div>
@@ -155,6 +155,15 @@ var checkLevelOverride = function() {
   return cLInstance;
 };
 
+var startchallenge = function(){
+  $(".challengeButtons").hide();
+  report.correctAnswerCount = 0;
+  report.wrongAnwerCount = 0;
+  report.points = 0;
+  nextProblem();
+  showCountDown();
+};
+
 CurrentLevel.initialize(checkLevelOverride());
 
 //cache jquery objects for page
@@ -163,17 +172,8 @@ var $message = $("#message");
 var selectedPrblem;
 $(document).ready(function () {
   $(".answerChoice").click(evaluateAnswer);
-  $("#startchallenge").click(function(){
-    $("#startchallenge").hide();
-    report.correctAnswerCount = 0;
-    report.wrongAnwerCount = 0;
-    report.points = 0;
-    nextProblem();
-    showCountDown();
-  });
-  $('#startchallengeAgain').click(function() {
-    location.reload();
-});
+  $(".challengeButtons").click(startchallenge);
+
   $(".answerChoice").hide();
   $('#multiplication-category').addClass('active');
 });
