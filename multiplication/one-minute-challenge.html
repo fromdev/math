@@ -147,6 +147,10 @@ var showSummary = function() {
   $("#startchallengeAgain").show();
 };
 var seconds = 60;
+var restartCountDown = function() {
+  seconds = 60;
+  showCountDown();
+};
 var showCountDown = function() {
     document.getElementById('secondsLeft').innerHTML = seconds;
     if(seconds > 0) {
@@ -190,7 +194,7 @@ var startchallenge = function(){
   report.correctAnswerCount = 0;
   report.wrongAnswerCount = 0;
   nextProblem();
-  showCountDown();
+  restartCountDown()
 };
 
 CurrentLevel.initialize(checkLevelOverride());
