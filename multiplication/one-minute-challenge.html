@@ -171,6 +171,9 @@ var showHighestScore = function () {
   var highestScore = parseInt(StorageUtils.getItem("HIGHEST_SCORE"));
   highestScore = (Number.isInteger(highestScore)) ? highestScore : 0;
   $("#highestScore").html(highestScore);
+  if(report.correctAnswerCount == highestScore) {
+    $("#highestScore").effect( "shake", { direction: "up", times: 3, distance: 5}, 1000 );
+  }
 };
 
 var CurrentLevel = Levels.CurrentLevel;
