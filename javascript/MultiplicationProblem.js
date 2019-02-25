@@ -2,7 +2,7 @@ class MultiplicationProblem {
   constructor(first, second) {
     this.first = first;
     this.second = second;
-    this.choices = this.calculateChoices();
+    this.choiceArray = this.calculateChoices();
   }
 
   get display() {
@@ -19,7 +19,7 @@ class MultiplicationProblem {
     return this.first * this.second;
   }
    choices() {
-     return this.choices;
+     return this.choiceArray;
    }
   calculateChoices() {
     const answ = this.answer();
