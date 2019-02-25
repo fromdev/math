@@ -14,6 +14,14 @@ Levels.TABLE = {
   "points" : 5,
   "type" : "Table"
 };
+
+Levels.SQUARE = {
+  "id" : 1,
+  "choicesGiven":6,
+  "range" : {"start":2,"end":50},
+  "points" : 5,
+  "type" : "Square"
+};
 Levels.NextLevel = function(prevLevel) {
   var nxtLevel = Levels.ONE;
   if(prevLevel && prevLevel.type == Levels.TABLE.type) {
@@ -81,10 +89,21 @@ Levels.CurrentLevel = {
     }
     return tableProblems;
   },
+  initSquareProblems : function(level) {
+    var tableProblems = [];
+    if(Levels.SQUARE.type == level.type) {
+      for(var i = level.range.start; i < level.range.end;i++){
+        tableProblems.push(new MultiplicationProblem(i,i));
+      }
+    }
+    return tableProblems;
+  },
   generateProblems : function(level) {
     var problems = new Array();
     if(level.type == Levels.TABLE.type) {
       problems = problems.concat(Levels.CurrentLevel.initTableProblems(level));
+    } if(level.type == Levels.SQUARE.type) {
+      problems = problems.concat(Levels.CurrentLevel.initSquareProblems(level));
     } else {
       var range = level.range;
       //Generate all problems if not already done
