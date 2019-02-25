@@ -1,5 +1,5 @@
 ---
-title: Practice Math Multiplication Tables Online
+title: Practice Math Square of Numbers Online
 layout: post
 ---
 <html>
@@ -8,8 +8,8 @@ layout: post
     <title>{{ page.title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is open source  multiplication tool for everyone to practice and learn multiplication." />
-    <meta name="keywords" content="online,tool,math,multiplication,practice,opensource" />
+    <meta name="description" content="This is open source tool for everyone to practice and learn multiplication and square of numbers." />
+    <meta name="keywords" content="online,tool,math,multiplication,square,practice,opensource" />
 
     {% include theme-css %}
     {% include ie-fixes %}
@@ -51,7 +51,7 @@ layout: post
             <section class="content">
               <div class="box box-success">
                   <div class="box-header with-border">
-                      <h1 class="box-title">Solve Multiplication Problem</h1>
+                      <h1 class="box-title">What is the square of this number?</h1>
                   </div>
                   <!-- /.box-header -->
                   <!-- form start -->
@@ -74,9 +74,15 @@ layout: post
                   <!-- /.box-body -->
                   <div class="box-footer">
                       <div class="row">
-                          <div class="col-xs-6">
-                              <input type="number" class="btn btn-block btn-default btn-lg" id="answer" placeholder="Type your answer here"/>
-                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice">Check Answer</button>
+                          <div class="col-xs-4">
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice0">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice1">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice2">?</button>
+                          </div>
+                          <div class="col-xs-4" >
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice3">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice4">?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice5">?</button>
                           </div>
                       </div>
                       <div class="row">
@@ -101,18 +107,18 @@ layout: post
 
 </body>
 <script type="text/javascript" src="https://math.imustread.com/javascript/json2.js"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/fromdev-utils.js?v=5"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/MultiplicationProblem.js?v=12"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/Levels.js?v=15"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/fromdev-utils.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/MultiplicationProblem.js?3"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/CubeProblem.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/Levels.js"></script>
 <script type="text/javascript" src="https://math.imustread.com/javascript/problem.generators.js"></script>
-<script type="text/javascript" src="https://math.imustread.com/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
 
 <script type="text/javascript">
     var onScreenDebug = false;
-    var debug = false;
-    Levels.CurrentLevel.KEY = "MULTIPLICATION.PRACTICE";
+    var debug = true;
+    Levels.CurrentLevel.KEY = "MULTIPLICATION.MULTIPLE.CHOICE.SQUARE";
+    Levels.CurrentLevel.MULTIPLE_CHOICE = true;
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
-
 
 var CurrentLevel = Levels.CurrentLevel;
 
@@ -120,36 +126,25 @@ var checkLevelOverride = function() {
   var url = new URL(window.location.href);
   var testByTable = parseInt(url.searchParams.get("t"));
   if(testByTable && Number.isInteger(testByTable) && testByTable > 0) {
-    Levels.TABLE.id = testByTable;
-    return Levels.TABLE;
+    Levels.SQUARE.id = testByTable;
+    return Levels.SQUARE;
   }
-  var l = CurrentLevel.Instance();
-  return (l) ? l : Levels.TABLE;
+    var l = CurrentLevel.Instance();
+    return (l) ? l : Levels.SQUARE;
 };
 
 CurrentLevel.initialize(checkLevelOverride());
 
 $(document).ready(function () {
   $(".answerChoice").click(function(){
-      var selectedAnswer = $("#answer").val();
+      var selectedAnswer = $(this).text();
       CurrentLevel.evaluateAnswer(selectedAnswer);
   });
-    $('#answer').keypress(function (e) {
-        if (e.which == 13) {
-            $('.answerChoice').trigger("click");
-            return false;
-        }
-    });
   $("#nextLevel").click(function(){
     CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
-    CurrentLevel.nextProblem();
-    $('#answer').show();
-    $('#answer').focus();
+      CurrentLevel.nextProblem();
   });
-
-  CurrentLevel.nextProblem();
-  $('#answer').selectOnFocus();
-  $('#answer').focus();
+    CurrentLevel.nextProblem();
   $('#multiplication-category').addClass('active');
 });
 

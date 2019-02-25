@@ -12,7 +12,8 @@ Levels.TABLE = {
   "choicesGiven":6,
   "range" : {"start":0,"end":10},
   "points" : 5,
-  "type" : "Table"
+  "type" : "Table",
+  "generator": Problems.Generators.tableProblemGenerator
 };
 
 Levels.SQUARE = {
@@ -20,7 +21,16 @@ Levels.SQUARE = {
   "choicesGiven":6,
   "range" : {"start":2,"end":50},
   "points" : 5,
-  "type" : "Square"
+  "type" : "Square",
+  "generator": Problems.Generators.squareProblemGenerator
+};
+Levels.CUBE = {
+  "id" : 1,
+  "choicesGiven":6,
+  "range" : {"start":2,"end":50},
+  "points" : 5,
+  "type" : "Cube",
+  "generator": Problems.Generators.cubeProblemGenerator
 };
 Levels.NextLevel = function(prevLevel) {
   var nxtLevel = Levels.ONE;
@@ -60,66 +70,10 @@ Levels.CurrentLevel = {
   Instance : function() {
     return StorageUtils.getJSON(Levels.CurrentLevel.KEY);
   },
-  initAllProblems : function() {
-    var allProblems = Levels.CurrentLevel.ALL_PROBLEMS;
-    if(allProblems.length == 0) {
-      var allProblemRangeEnd = 26;
-      for(var i = 0; i < allProblemRangeEnd; i++) {
-        for(var j = 0; j < allProblemRangeEnd; j++) {
-          if(i < 2 || j < 2) {
-            //for lower number put only 1 out of 5
-            if(RandomUtils.getRandomInt(1,100) % 5 == 0) {
-              allProblems.push(new MultiplicationProblem(i,j));
-            }
-          } else {
-            allProblems.push(new MultiplicationProblem(i,j));
-          }
-        }
-      }
-    }
-    return allProblems;
-  },
-  initTableProblems : function(level) {
-    var tableProblems = [];
-    if(Levels.TABLE.type == level.type) {
-      for(var i = level.range.start; i < level.range.end;i++){
-        tableProblems.push(new MultiplicationProblem(level.id,i));
-        tableProblems.push(new MultiplicationProblem(i,level.id));
-      }
-    }
-    return tableProblems;
-  },
-  initSquareProblems : function(level) {
-    var tableProblems = [];
-    if(Levels.SQUARE.type == level.type) {
-      for(var i = level.range.start; i < level.range.end;i++){
-        tableProblems.push(new MultiplicationProblem(i,i));
-      }
-    }
-    return tableProblems;
-  },
   generateProblems : function(level) {
-    var problems = new Array();
-    if(level.type == Levels.TABLE.type) {
-      problems = problems.concat(Levels.CurrentLevel.initTableProblems(level));
-    } if(level.type == Levels.SQUARE.type) {
-      problems = problems.concat(Levels.CurrentLevel.initSquareProblems(level));
-    } else {
-      var range = level.range;
-      //Generate all problems if not already done
-      var allProblems = Levels.CurrentLevel.initAllProblems();
-
-      if(allProblems.length > range.end) {
-        problems = problems.concat(allProblems.slice(range.start,range.end));
-      }
-      //Randomly add some problems from previous levels.
-      if(range.start > 0 ) {
-        var allProblemsFromPrevLevels = ArrayUtils.shuffle(allProblems.slice(0,range.start));
-        //picking random 5 problems
-        problems = problems.concat(allProblemsFromPrevLevels.slice(0,4));
-      }
-    }
-    return problems;
+    //Use a default generator if not specified
+    level.generator = (level.generator) ? level.generator : Problems.Generators.defaultProblemGenerator;
+    return level.generator(level);
   },
   initialize : function(level) {
     //default start with level one
@@ -170,7 +124,7 @@ Levels.CurrentLevel = {
       StorageUtils.setItem(Levels.CurrentLevel.KEY,JSON.stringify(lvl));
       $("#totalPoints").html(Levels.CurrentLevel.Instance().TOTAL_POINTS);
   },
-    evaluateAnswer : function(selectedAnswer) {
+  evaluateAnswer : function(selectedAnswer) {
         var selectedPrblem = Levels.CurrentLevel.findNextProblem();
         var correctAnswer = selectedPrblem.answer();
         var $message = $("#message");
@@ -188,7 +142,7 @@ Levels.CurrentLevel = {
         $("#answer").val('');
         $('#answer').focus();
   },
-    nextProblem : function() {
+  nextProblem : function() {
         var selectedPrblem = Levels.CurrentLevel.findNextProblem();
         var $problem = $("#problem");
         if(selectedPrblem) {
@@ -204,7 +158,7 @@ Levels.CurrentLevel = {
             $('#answer').hide();
         }
     },
-    showChoices : function(selectedPrblem) {
+  showChoices : function(selectedPrblem) {
         if (Levels.CurrentLevel.MULTIPLE_CHOICE) {
             var selectedPrblem = Levels.CurrentLevel.findNextProblem();
             var choices = ArrayUtils.shuffle(selectedPrblem.choices());
