@@ -93,7 +93,7 @@ Levels.CurrentLevel = {
     var tableProblems = [];
     if(Levels.SQUARE.type == level.type) {
       for(var i = level.range.start; i < level.range.end;i++){
-        tableProblems.push(new Square(i));
+        tableProblems.push(new MultiplicationProblem(i,i));
       }
     }
     return tableProblems;
