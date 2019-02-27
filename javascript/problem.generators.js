@@ -53,7 +53,7 @@ Problems.Generators = {
     var range = level.range;
     //Generate all problems if not already done
     var allProblems = Problems.Generators.allProblemGenerator();
-
+    var problems = problems || {};
     if(allProblems.length > range.end) {
       problems = problems.concat(allProblems.slice(range.start,range.end));
     }
