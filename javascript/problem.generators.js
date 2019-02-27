@@ -1,3 +1,5 @@
+var Problems = Problems || {};
+
 Problems.Generators = {
   tableProblemGenerator : function(level) {
     var tableProblems = [];
