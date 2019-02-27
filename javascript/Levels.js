@@ -99,7 +99,12 @@ Levels.CurrentLevel = {
      var level = CurrentLevel.Instance();
      if(level.problems.length > 0) {
        var problem = level.problems.last();
-       return new MultiplicationProblem(problem.first, problem.second);
+       if("Cube" == level.type) {
+           return new CubeProblem(problem.number);
+       } else {
+          return new MultiplicationProblem(problem.first, problem.second);
+       }
+
      }
   },
   moveProblemToEnd : function() {
