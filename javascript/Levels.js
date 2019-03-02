@@ -32,6 +32,16 @@ Levels.CUBE = {
   "type" : "Cube",
   "generator": Problems.Generators.cubeProblemGenerator
 };
+
+Levels.ALGEBRA = {
+  "id" : 1,
+  "choicesGiven":6,
+  "range" : {"start":1,"end":100},
+  "points" : 5,
+  "type" : "Algebra",
+  "generator": Problems.Generators.algebraProblemGenerator
+};
+
 Levels.NextLevel = function(prevLevel) {
   var nxtLevel = Levels.ONE;
   if(prevLevel && prevLevel.type == Levels.TABLE.type) {
@@ -101,6 +111,8 @@ Levels.CurrentLevel = {
        var problem = level.problems.last();
        if("Cube" == level.type) {
            return new CubeProblem(problem.number);
+       }  else if ("Algebra" == level.type){
+          return new SimpleAddEquation(problem.a, problem.b);
        } else {
           return new MultiplicationProblem(problem.first, problem.second);
        }

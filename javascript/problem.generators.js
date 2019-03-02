@@ -29,6 +29,17 @@ Problems.Generators = {
     }
     return problems;
   },
+  algebraProblemGenerator : function(level) {
+    var problems = [];
+    if(Levels.ALGEBRA.type == level.type) {
+      for(var i = level.range.start; i < level.range.end;i++){
+        var a = RandomUtils.getRandomInt(1,level.range.end/2);
+        var b = RandomUtils.getRandomInt(level.range.end/2 + level.range.end);
+        problems.push(new SimpleAddEquation(a,b));
+      }
+    }
+    return problems;
+  },
   allProblemGenerator : function() {
     var allProblems = Levels.CurrentLevel.ALL_PROBLEMS;
     if(allProblems.length == 0) {
