@@ -36,6 +36,17 @@
 
                         </ul>
                     </li>
+                    <li class="treeview" id="algebra-category">
+                        <a href="#">
+                            <i class="fa fa-edit text-aqua"></i> <span>Algebra</span>
+                            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="https://math.imustread.com/algebra/practice.html"><i class="fa fa-circle-o text-aqua"></i> Practice Equations</a></li>
+                        </ul>
+                    </li>
                     <li><a href="https://math.imustread.com/contact.html"><i class="fa fa-circle-o text-aqua"></i> <span>Feedback</span></a></li>
                 </ul>
             </section>
