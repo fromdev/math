@@ -1,9 +1,9 @@
-class SimpleAddEquation {
+class SimpleSubtractEquation {
   //x + a = b
   constructor(a, b) {
     this.a = a;
     this.b = b;
-    this.subtype = "SimpleAddEquation";
+    this.subtype = "SimpleSubtractEquation";
     this.choiceArray = this.calculateChoices();
   }
 
@@ -12,11 +12,11 @@ class SimpleAddEquation {
   }
 
   displayProblem() {
-    return "x + " + this.a + " = " + this.b;
+    return "x - " + this.a + " = " + this.b;
   }
 
   answer() {
-    return this.b  - this.a;
+    return this.b  + this.a;
   }
 
   choices() {

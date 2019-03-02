@@ -36,6 +36,7 @@ Problems.Generators = {
         var a = RandomUtils.getRandomInt(1,level.range.end/2);
         var b = RandomUtils.getRandomInt(level.range.end/2 + level.range.end);
         problems.push(new SimpleAddEquation(a,b));
+        problems.push(new SimpleSubtractEquation(a,b));
       }
     }
     return problems;

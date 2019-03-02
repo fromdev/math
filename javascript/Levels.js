@@ -112,7 +112,12 @@ Levels.CurrentLevel = {
        if("Cube" == level.type) {
            return new CubeProblem(problem.number);
        }  else if ("Algebra" == level.type){
-          return new SimpleAddEquation(problem.a, problem.b);
+         if(problem.subtype && "SimpleAddEquation" == problem.subtype) {
+             return new SimpleAddEquation(problem.a, problem.b);
+         }
+         if(problem.subtype && "SimpleSubtractEquation" == problem.subtype) {
+             return new SimpleSubtractEquation(problem.a, problem.b);
+         }
        } else {
           return new MultiplicationProblem(problem.first, problem.second);
        }
