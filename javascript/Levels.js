@@ -118,6 +118,12 @@ Levels.CurrentLevel = {
          if(problem.subtype && "SimpleSubtractEquation" == problem.subtype) {
              return new SimpleSubtractEquation(problem.a, problem.b);
          }
+         if(problem.subtype && "SimpleMultiplyEquation" == problem.subtype) {
+             return new SimpleMultiplyEquation(problem.a, problem.b);
+         }
+         if(problem.subtype && "SimpleDivideEquation" == problem.subtype) {
+             return new SimpleDivideEquation(problem.a, problem.b);
+         }
        } else {
           return new MultiplicationProblem(problem.first, problem.second);
        }
