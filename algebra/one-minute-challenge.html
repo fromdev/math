@@ -1,0 +1,294 @@
+---
+title: Math Multiplication Practice Online : Level 1
+layout: post
+---
+<html>
+<head>
+   {% include common-meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is open source multiplication tools that gives it in a challenging game format with points for correct answers." />
+    <meta name="keywords" content="online,tool,math,multiplication,practice,opensource" />
+
+    {% include theme-css %}
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+{% include theme-header %}
+{% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="row">
+                <div class="col-lg-2 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h3 id="secondsLeft">60</h3>
+                      <p>Seconds</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h3 id="totalPoints">-</h3>
+                      <p id="pointsMessage">Points</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h3 id="highestScore">-</h3>
+                      <p id="highestScoreMessage">Highest Score</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+              <div class="box box-success">
+                  <div class="box-header with-border">
+                      <h1 class="box-title">1 Minute Challenge : How many multiplication Problems can you solve in a minute?</h1>
+                  </div>
+                  <!-- /.box-header -->
+                  <!-- form start -->
+                  <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-4">
+                          <form role="form">
+                              <div class="form-group">
+                                  <h2 id="problem"></h2>
+                              </div>
+                          </form>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="form-group">
+                            <h2 id="message"></h2>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <!-- /.box-body -->
+                  <div class="box-footer">
+                      <div class="row answerChoiceRow" style="display:none;" >
+                          <div class="col-xs-4">
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice0" >?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice1" >?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice2" >?</button>
+                          </div>
+                          <div class="col-xs-4" >
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice3" >?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice4" >?</button>
+                              <button type="button" class="btn btn-block btn-default btn-lg answerChoice" id="choice5" >?</button>
+                          </div>
+                      </div>
+                      <div class="row report" style="display:none;" >
+                          <div class="col-xs-4">
+                              <h2> <i class="fa fa-check-circle text-green"></i> Correct Answers</h2>
+                              <h2 id="correctAnswerCount" class="text-green"></h2>
+                          </div>
+                          <div class="col-xs-4" >
+                              <h2> <i class="fa fa-circle-o text-red"></i> Wrong Answers</h2>
+                              <h2 id="wrongAnswerCount" class="text-red"></h2>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <button type="button" class="btn btn-block btn-success btn-lg" id="nextLevel" style="display:none;">Go To Next Level</button>
+                          <button type="button" class="btn btn-block btn-success btn-lg challengeButtons" id="startchallenge">Start Challenge</button>
+                          <button type="button" class="btn btn-block btn-success btn-lg challengeButtons" id="startchallengeAgain" style="display:none;">Start Challenge Again</button>
+                        </div>
+                      </div>
+                  </div>
+                  <!-- /.box-footer -->
+              </div>
+                <div id="debug">
+                    ....
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+{% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+{% include theme-bottom-js %}
+
+</body>
+<script type="text/javascript" src="https://math.imustread.com/javascript/json2.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/fromdev-utils.js?v=5"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/MultiplicationProblem.js?v=12"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/problem.generators.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/Levels.js?v=15"></script>
+
+<script type="text/javascript">
+    var onScreenDebug = false;
+    var debug = true;
+Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
+var report = {"correctAnswerCount" : 0, "wrongAnswerCount" : 0};
+var showSummary = function() {
+  console.log("Challenge Time up");
+  $(".answerChoiceRow").hide();
+  $problem.html('Time is up! Check your score. ');
+  $("#correctAnswerCount").html(report.correctAnswerCount);
+  $("#wrongAnswerCount").html(report.wrongAnswerCount);
+  $(".report").show();
+  $("#startchallengeAgain").show();
+};
+var seconds = 60;
+var restartCountDown = function() {
+  seconds = 60;
+  showCountDown();
+};
+var showCountDown = function() {
+    document.getElementById('secondsLeft').innerHTML = seconds;
+    if(seconds > 0) {
+        seconds = seconds - 1;
+        var t = setTimeout(showCountDown, 1000);
+    } else {
+      showSummary();
+    }
+};
+
+var showPoints = function () {
+  var totalPoints = parseInt(StorageUtils.getItem("TOTAL_POINTS"));
+  totalPoints = (Number.isInteger(totalPoints)) ? totalPoints : 0;
+  $("#totalPoints").html(totalPoints);
+};
+
+var showHighestScore = function () {
+  var highestScore = parseInt(StorageUtils.getItem("HIGHEST_SCORE"));
+  highestScore = (Number.isInteger(highestScore)) ? highestScore : 0;
+  $("#highestScore").html(highestScore);
+  if(report.correctAnswerCount == highestScore) {
+    $("#highestScore").effect( "shake", { direction: "up", times: 2, distance: 5}, 800 );
+  }
+};
+
+var CurrentLevel = Levels.CurrentLevel;
+
+var checkLevelOverride = function() {
+  var url = new URL(window.location.href);
+  var testByTable = parseInt(url.searchParams.get("t"));
+  if(testByTable && Number.isInteger(testByTable) && testByTable > 0) {
+    Levels.ALGEBRA.id = testByTable;
+    return Levels.ALGEBRA;
+  }
+    var l = CurrentLevel.Instance();
+    return (l) ? l : Levels.ALGEBRA;
+};
+
+var startchallenge = function(){
+  $(".challengeButtons").hide();
+  $(".report").hide();
+  report.correctAnswerCount = 0;
+  report.wrongAnswerCount = 0;
+  nextProblem();
+  restartCountDown()
+};
+
+CurrentLevel.initialize(checkLevelOverride());
+
+//cache jquery objects for page
+var $problem = $("#problem");
+var $message = $("#message");
+var selectedPrblem;
+$(document).ready(function () {
+  $(".answerChoice").click(evaluateAnswer);
+  $("#startchallengeAgain").click(startchallenge);
+  $("#startchallenge").click(startchallenge);
+  showPoints();
+  showHighestScore();
+  $('#multiplication-category').addClass('active');
+});
+
+var evaluateAnswer = function() {
+  var correctAnswer = selectedPrblem.answer();
+  var selectedAnswer = $(this).text();
+  if(correctAnswer == selectedAnswer) {
+    console.log("correct answer - questions remaining " + CurrentLevel.Instance().problems.length);
+    $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + CurrentLevel.Instance().points).show().delay(1000).fadeOut();
+    rewardPoints();
+    report.correctAnswerCount++;
+    checkScore(report);
+    CurrentLevel.removeLastProblem();
+  } else {
+    console.log("incorrect answer - adding back");
+    report.wrongAnswerCount++;
+    $message.html('<i class="fa  fa-times text-red"></i>').show().delay(1000).fadeOut();;
+    CurrentLevel.moveProblemToEnd();
+  }
+  nextProblem();
+};
+
+var rewardPoints = function() {
+  var totalPoints = parseInt(StorageUtils.getItem("TOTAL_POINTS"));
+  if(!totalPoints || !Number.isInteger(totalPoints)) {
+    totalPoints = 0;
+  }
+  totalPoints += CurrentLevel.Instance().points;
+  StorageUtils.setItem("TOTAL_POINTS",totalPoints);
+  showPoints();
+};
+
+var checkScore = function(report) {
+  var highestScore = parseInt(StorageUtils.getItem("HIGHEST_SCORE"));
+  if(!highestScore || !Number.isInteger(highestScore) || report.correctAnswerCount > highestScore) {
+    highestScore = report.correctAnswerCount;
+  }
+
+  StorageUtils.setItem("HIGHEST_SCORE",highestScore);
+  showHighestScore();
+};
+
+var nextProblem = function() {
+  selectedPrblem = CurrentLevel.findNextProblem();
+  if(selectedPrblem) {
+    console.log(selectedPrblem.display);
+    $(".answerChoiceRow").show();
+    $problem.text(selectedPrblem.displayProblem());
+    showChoices(selectedPrblem);
+  } else {
+    console.log('Level complete - next level ' + (CurrentLevel.Instance().id + 1));
+    CurrentLevel.initialize(Levels.NextLevel(CurrentLevel.Instance()));
+    nextProblem();
+  }
+};
+
+var showChoices = function(problem) {
+  var choices = ArrayUtils.shuffle(problem.choices());
+  if(choices) {
+    for(var i = 0; i < CurrentLevel.Instance().choicesGiven; i++) {
+      var ch = -1;
+      if(i < choices.length){
+        ch = choices[i];
+      }
+      var $ch = $("#choice" + i);
+      if($ch) {
+        if(ch >= 0) {
+          $ch.text(ch);
+        } else {
+          $ch.remove();
+        }
+      }
+    }
+
+  }
+};
+
+
+
+</script>
+</html>
