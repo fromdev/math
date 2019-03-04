@@ -106,6 +106,7 @@ layout: post
 <script type="text/javascript" src="https://math.imustread.com/javascript/problem.generators.js"></script>
 <script type="text/javascript" src="https://math.imustread.com/javascript/Levels.js?v=15"></script>
 <script type="text/javascript" src="https://math.imustread.com/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/level.override.js"></script>
 
 <script type="text/javascript">
     var onScreenDebug = false;
@@ -116,18 +117,7 @@ Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]
 
 var CurrentLevel = Levels.CurrentLevel;
 
-var checkLevelOverride = function() {
-  var url = new URL(window.location.href);
-  var testByTable = parseInt(url.searchParams.get("t"));
-  if(testByTable && Number.isInteger(testByTable) && testByTable > 0) {
-    Levels.TABLE.id = testByTable;
-    return Levels.TABLE;
-  }
-  var l = CurrentLevel.Instance();
-  return (l) ? l : Levels.TABLE;
-};
-
-CurrentLevel.initialize(checkLevelOverride());
+CurrentLevel.initialize(checkLevelOverride(Levels.TABLE));
 
 $(document).ready(function () {
   $(".answerChoice").click(function(){
