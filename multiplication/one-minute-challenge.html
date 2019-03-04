@@ -237,18 +237,8 @@ var evaluateAnswer = function() {
   nextProblem();
 };
 
-var parseJsonArray = function(in) {
-  var arr = [];
-  try {
-    arr = JSON.parse(in);
-  } catch (ex) {
-    console.error(ex);
-  }
-  return arr;
-};
 var readAuditTrail() {
-  var auditTrailStr = StorageUtils.getItem("AUDIT");
-  var auditTrail = (auditTrailStr) ? parseJsonArray(auditTrailStr) : [];
+  var auditTrail = (auditTrailStr) ? StorageUtils.getJSON("AUDIT", []) : [];
   return auditTrail;
 };
 var recordSuccess = function(problem, selectedAnswer) {
