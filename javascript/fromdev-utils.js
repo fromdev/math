@@ -51,7 +51,7 @@ Utils.storage = {
       try {
         jsonObject = JSON.parse(StorageUtils.getItem(key)); // this is how you parse a string into JSON
       } catch (ex) {
-        console.error(ex);
+        console.log(ex);
       }
       return jsonObject;
     }
