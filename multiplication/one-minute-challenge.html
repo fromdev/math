@@ -239,18 +239,21 @@ var evaluateAnswer = function() {
 
 var readAuditTrail = function() {
   var auditTrail =  StorageUtils.getItem("AUDIT");
+  if(typeof(auditTrail) == 'string') {
+    auditTrail = JSON.parse(auditTrail);
+  }
   return auditTrail || [];
 };
 var recordSuccess = function(problem, selectedAnswer) {
   var auditTrail = readAuditTrail();
   auditTrail.push({problem : problem, status: "correct", inputAnswer : selectedAnswer, timestamp : Date.now()});
-  StorageUtils.setItem("AUDIT",auditTrail);
+  StorageUtils.setItem("AUDIT",JSON.stringify(auditTrail));
 };
 
 var recordFailure = function(problem, selectedAnswer){
   var auditTrail = readAuditTrail();
   auditTrail.push({problem : problem, status: "wrong", inputAnswer : selectedAnswer, timestamp : Date.now()});
-  StorageUtils.setItem("AUDIT",auditTrail);
+  StorageUtils.setItem("AUDIT",JSON.stringify(auditTrail));
 };
 
 var rewardPoints = function() {
