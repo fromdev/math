@@ -45,6 +45,8 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="https://math.imustread.com/algebra/practice.html"><i class="fa fa-circle-o text-aqua"></i> Practice Equations</a></li>
+                            <li><a href="https://math.imustread.com/algebra/one-minute-challenge.html"><i class="fa fa-circle-o text-aqua"></i>1 Minute Challenge</a></li>
+
                         </ul>
                     </li>
                     <li><a href="https://math.imustread.com/contact.html"><i class="fa fa-circle-o text-aqua"></i> <span>Feedback</span></a></li>
