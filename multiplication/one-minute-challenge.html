@@ -237,8 +237,8 @@ var evaluateAnswer = function() {
   nextProblem();
 };
 
-var readAuditTrail() {
-  var auditTrail = (auditTrailStr) ? StorageUtils.getJSON("AUDIT", []) : [];
+var readAuditTrail = function() {
+  var auditTrail =  StorageUtils.getJSON("AUDIT", []);
   return auditTrail;
 };
 var recordSuccess = function(problem, selectedAnswer) {
