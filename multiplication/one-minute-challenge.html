@@ -238,8 +238,8 @@ var evaluateAnswer = function() {
 };
 
 var readAuditTrail = function() {
-  var auditTrail =  StorageUtils.getJSON("AUDIT", []);
-  return auditTrail;
+  var auditTrail =  StorageUtils.getItem("AUDIT");
+  return auditTrail || [];
 };
 var recordSuccess = function(problem, selectedAnswer) {
   var auditTrail = readAuditTrail();
