@@ -237,14 +237,28 @@ var evaluateAnswer = function() {
   nextProblem();
 };
 
+var parseJsonArray = function(in) {
+  var arr = [];
+  try {
+    arr = JSON.parse(in);
+  } catch (ex) {
+    console.error(ex);
+  }
+  return arr;
+};
+var readAuditTrail() {
+  var auditTrailStr = StorageUtils.getItem("AUDIT");
+  var auditTrail = (auditTrailStr) ? parseJsonArray(auditTrailStr) : [];
+  return auditTrail;
+};
 var recordSuccess = function(problem, selectedAnswer) {
-  var auditTrail = StorageUtils.getJSON("AUDIT") || [];
+  var auditTrail = readAuditTrail();
   auditTrail.push({problem : problem, status: "correct", inputAnswer : selectedAnswer, timestamp : Date.now()});
   StorageUtils.setItem("AUDIT",auditTrail);
 };
 
 var recordFailure = function(problem, selectedAnswer){
-  var auditTrail = StorageUtils.getJSON("AUDIT") || [];
+  var auditTrail = readAuditTrail();
   auditTrail.push({problem : problem, status: "wrong", inputAnswer : selectedAnswer, timestamp : Date.now()});
   StorageUtils.setItem("AUDIT",auditTrail);
 };
