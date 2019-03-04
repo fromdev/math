@@ -108,6 +108,7 @@ layout: post
 <script type="text/javascript" src="https://math.imustread.com/javascript/MultiplicationWordProblem.js?v=4"></script>
 <script type="text/javascript" src="https://math.imustread.com/javascript/WordProblemLevels.js?v=3"></script>
 <script type="text/javascript" src="https://math.imustread.com/plugins/selectOnFocus/jquery.selectOnFocus.min.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/level.override.js"></script>
 
 <script type="text/javascript">
     var onScreenDebug = false;
@@ -118,12 +119,7 @@ Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]
 
 var CurrentLevel = Levels.CurrentLevel;
 
-var checkLevelOverride = function() {
-  var l = CurrentLevel.Instance();
-  return (l) ? l : Levels.ONE;
-};
-
-CurrentLevel.initialize(checkLevelOverride());
+CurrentLevel.initialize(checkLevelOverride(Levels.ONE));
 
 $(document).ready(function () {
   $(".answerChoice").click(function(){

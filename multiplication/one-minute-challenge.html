@@ -141,7 +141,7 @@ var report = {"correctAnswerCount" : 0, "wrongAnswerCount" : 0};
 var showSummary = function() {
   console.log("Challenge Time up");
   $(".answerChoiceRow").hide();
-  $problem.html('Time is up! Check your score. ');
+  $problem.html('Time is up! Check your score. ' + JSON.stringify(StorageUtils.getJSON("AUDIT") || []));
   $("#correctAnswerCount").html(report.correctAnswerCount);
   $("#wrongAnswerCount").html(report.wrongAnswerCount);
   $(".report").show();
@@ -226,13 +226,27 @@ var evaluateAnswer = function() {
     report.correctAnswerCount++;
     checkScore(report);
     CurrentLevel.removeLastProblem();
+    recordSuccess(selectedPrblem,selectedAnswer);
   } else {
     console.log("incorrect answer - adding back");
     report.wrongAnswerCount++;
     $message.html('<i class="fa  fa-times text-red"></i>').show().delay(1000).fadeOut();;
     CurrentLevel.moveProblemToEnd();
+    recordFailure(selectedPrblem,selectedAnswer);
   }
   nextProblem();
+};
+
+var recordSuccess = function(problem, selectedAnswer) {
+  var auditTrail = StorageUtils.getJSON("AUDIT") || [];
+  auditTrail.push({problem : problem, status: "correct", inputAnswer : selectedAnswer, timestamp : Date.now()});
+  StorageUtils.setItem("AUDIT",auditTrail);
+};
+
+var recordFailure = function(){
+  var auditTrail = StorageUtils.getJSON("AUDIT") || [];
+  auditTrail.push({problem : problem, status: "wrong", inputAnswer : selectedAnswer, timestamp : Date.now()});
+  StorageUtils.setItem("AUDIT",auditTrail);
 };
 
 var rewardPoints = function() {
