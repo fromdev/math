@@ -44,16 +44,16 @@ Levels.ALGEBRA = {
 };
 Levels.FindGeneratorByType = function(level){
   if(level && level.type) {
-    if('ALGEBRA' == level.type) {
+    if(Levels.ALGEBRA.type == level.type) {
       return Problems.Generators.algebraProblemGenerator;
     }
-    if('CUBE' == level.type) {
+    if(Levels.CUBE.type == level.type) {
       return Problems.Generators.cubeProblemGenerator;
     }
-    if('SQUARE' == level.type) {
+    if(Levels.SQUARE.type == level.type) {
       return Problems.Generators.squareProblemGenerator;
     }
-    if('TABLE' == level.type) {
+    if(Levels.TABLE.type == level.type) {
       return Problems.Generators.tableProblemGenerator;
     }
     return Problems.Generators.allProblemGenerator;
