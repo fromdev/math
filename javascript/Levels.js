@@ -44,23 +44,34 @@ Levels.ALGEBRA = {
 
 Levels.NextLevel = function(prevLevel) {
   var nxtLevel = Levels.ONE;
-  if(prevLevel && prevLevel.type == Levels.TABLE.type) {
-      nxtLevel = (prevLevel) ? {
-          "id" : prevLevel.id + 1,
-          "choicesGiven":6,
-          "range" : {"start":prevLevel.range.start,"end":prevLevel.range.end },
-          "points" : prevLevel.points + 1,
-          "type" : prevLevel.type,
-          "problems":[]
-      } : Levels.TABLE;
+  if(prevLevel) {
+    //set default values in next level
+    nxtLevel = {
+        "id" : prevLevel.id + 1,
+        "choicesGiven":prevLevel.choicesGiven,
+        "range" : {"start":prevLevel.range.start,"end":prevLevel.range.end },
+        "points" : prevLevel.points + 1,
+        "type" : prevLevel.type,
+        "generator": prevLevel.generator,
+        "problems":[]
+    };
+  }
+  if(prevLevel.type == Levels.TABLE.type) {
+    if(!nxtLevel) {
+      nxtLevel = Levels.TABLE;
+    }
+  } else if(prevLevel.type == Levels.ALGEBRA.type) {
+    if(!nxtLevel) {
+      nxtLevel = Levels.ALGEBRA;
+    }
+    nxtLevel.range.start++;
+    nxtLevel.range.end++;
   } else {
-    nxtLevel = (prevLevel) ? {
-      "id" : prevLevel.id + 1,
-      "choicesGiven":6,
-      "range" : {"start":prevLevel.range.end+1,"end":prevLevel.range.end + 10},
-      "points" : prevLevel.points + 1,
-      "type" : prevLevel.type
-    } : Levels.ONE;
+    if(!nxtLevel) {
+      nxtLevel = Levels.ONE;
+    }
+    nxtLevel.range.start +=1;
+    nxtLevel.range.end +=10;
   }
   return nxtLevel;
 };
