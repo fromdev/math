@@ -5,7 +5,8 @@ Levels.ONE = {
   "choicesGiven":6,
   "range" : {"start":0,"end":9},
   "points" : 5,
-  "type" : "Level"
+  "type" : "Level",
+  "generator": Problems.Generators.allProblemGenerator
 };
 Levels.TABLE = {
   "id" : 1,
@@ -41,7 +42,24 @@ Levels.ALGEBRA = {
   "type" : "Algebra",
   "generator": Problems.Generators.algebraProblemGenerator
 };
+Levels.FindGeneratorByType = function(level){
+  if(level && level.type) {
+    if('ALGEBRA' == level.type) {
+      return Problems.Generators.algebraProblemGenerator;
+    }
+    if('CUBE' == level.type) {
+      return Problems.Generators.cubeProblemGenerator;
+    }
+    if('SQUARE' == level.type) {
+      return Problems.Generators.squareProblemGenerator;
+    }
+    if('TABLE' == level.type) {
+      return Problems.Generators.tableProblemGenerator;
+    }
+    return Problems.Generators.allProblemGenerator;
+  }
 
+};
 Levels.NextLevel = function(prevLevel) {
   var nxtLevel = Levels.ONE;
   if(prevLevel) {
@@ -52,7 +70,7 @@ Levels.NextLevel = function(prevLevel) {
         "range" : {"start":prevLevel.range.start,"end":prevLevel.range.end },
         "points" : prevLevel.points + 1,
         "type" : prevLevel.type,
-        "generator": prevLevel.generator,
+        "generator": Levels.FindGeneratorByType(prevLevel),
         "problems":[]
     };
   }
