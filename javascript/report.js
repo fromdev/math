@@ -9,12 +9,12 @@ Report = {
     return auditTrail || [];
   },
    recordSuccess : function(problem, selectedAnswer) {
-    var auditTrail = readAuditTrail();
+    var auditTrail = Report.readAuditTrail();
     auditTrail.push({problem : problem, status: "correct", inputAnswer : selectedAnswer, timestamp : Date.now()});
     StorageUtils.setItem("AUDIT",JSON.stringify(auditTrail));
   },
   recordFailure : function(problem, selectedAnswer){
-    var auditTrail = readAuditTrail();
+    var auditTrail = Report.readAuditTrail();
     auditTrail.push({problem : problem, status: "wrong", inputAnswer : selectedAnswer, timestamp : Date.now()});
     StorageUtils.setItem("AUDIT",JSON.stringify(auditTrail));
   },
