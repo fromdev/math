@@ -30,7 +30,7 @@ Report = {
           html+='<td>' + row.status + '</td>';
           html+='<td>' + row.inputAnswer + '</td>';
           var date = new Date(row.timestamp);
-          html+='<td>' + date.getMonth() + '/' + date.getDate() + '/' + date.getYear() + '</td>';
+          html+='<td>' + (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear() + '</td>';
           html+='</tr>';
       });
       html+='</table>';
