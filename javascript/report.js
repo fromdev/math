@@ -23,7 +23,7 @@ Report = {
     var auditTrail = Report.readAuditTrail();
     if(auditTrail && auditTrail.length > 0) {
       html+='<table>';
-      html+='<tr><th>Problem</th><th>Attempt Result</th><th>Attempt Answer</th><th>Date</th></tr>'
+      html+='<tr><th>Problem</th><th>Attempt Result</th><th>Attempt Answer</th><th>Date [MM/DD/YYYY]</th></tr>'
       auditTrail.forEach(function(row){
           html+='<tr>';
           html+='<td>' + row.problem + '</td>';
