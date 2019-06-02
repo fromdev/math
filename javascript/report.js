@@ -24,7 +24,7 @@ Report = {
     if(auditTrail && auditTrail.length > 0) {
       html+='<table>';
       html+='<tr><th>Problem</th><th>Attempt Result</th><th>Attempt Answer</th><th>Date [MM/DD/YYYY]</th></tr>';
-      auditTrail.sort(function(a,b) {return (a.timestamp > b.timestamp) ? 1 : ((b.timestamp > a.timestamp) ? -1 : 0);} ); 
+      auditTrail.sort(function(a,b) {return (a.timestamp > b.timestamp) ? -1 : ((b.timestamp > a.timestamp) ? 1 : 0);} ); 
       auditTrail.forEach(function(row){
           html+='<tr>';
           html+='<td>' + row.problem + '</td>';
