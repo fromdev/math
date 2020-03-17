@@ -2,6 +2,7 @@ class MultiplicationProblem {
   constructor(first, second) {
     this.first = first;
     this.second = second;
+    this.subtype = "MultiplicationProblem";
     this.choiceArray = this.calculateChoices();
   }
 

@@ -12,7 +12,7 @@ class SimpleMultiplyEquation {
   }
 
   displayProblem() {
-    return "x." + this.a + " = " + this.b;
+    return "x * " + this.a + " = " + this.b;
   }
 
   answer() {
