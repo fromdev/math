@@ -28,7 +28,7 @@ Report = {
       auditTrail.forEach(function(row){
           const dp = (Problems && Problems.createByType && row.problem && row.problem.subtype)
           ? Problems.createByType[row.problem.subtype](row.problem): '';
-          const displayProblem = (dp && dp.display) ? dp.display() : 'Cant Serialize: ' + (row.problem.subtype || 'Unknown');
+          const displayProblem = (dp && dp.displayProblem) ? dp.displayProblem() : 'Cant Serialize: ' + (row.problem.subtype || 'Unknown');
           html+='<tr>';
           html+='<td>' + displayProblem + '</td>';
           html+='<td>' + row.status + '</td>';
