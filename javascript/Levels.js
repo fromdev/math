@@ -182,6 +182,7 @@ Levels.CurrentLevel = {
       $("#totalPoints").html(Levels.CurrentLevel.Instance().TOTAL_POINTS);
   },
   evaluateAnswer : function(selectedAnswer) {
+        if(!selectedAnswer) return;
         var selectedPrblem = Levels.CurrentLevel.findNextProblem();
         var correctAnswer = selectedPrblem.answer();
         var $message = $("#message");
