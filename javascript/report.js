@@ -26,8 +26,8 @@ Report = {
       html+='<tr><th>Problem</th><th>Attempt Result</th><th>Attempt Answer</th><th>Date [MM/DD/YYYY]</th></tr>';
       auditTrail.sort(function(a,b) {return (a.timestamp > b.timestamp) ? -1 : ((b.timestamp > a.timestamp) ? 1 : 0);} );
       auditTrail.forEach(function(row){
-          const displayProblem = (Problems && Problems.createByType && row.problem && row.problem.type)
-          ? Problems.createByType[row.problem.type](row.problem) : 'Cant Serialize: ' + (row.problem.type || 'Unknown');
+          const displayProblem = (Problems && Problems.createByType && row.problem && row.problem.subtype)
+          ? Problems.createByType[row.problem.subtype](row.problem) : 'Cant Serialize: ' + (row.problem.subtype || 'Unknown');
           html+='<tr>';
           html+='<td>' + displayProblem + '</td>';
           html+='<td>' + row.status + '</td>';
