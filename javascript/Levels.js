@@ -187,15 +187,23 @@ Levels.CurrentLevel = {
         var $message = $("#message");
         if(correctAnswer == selectedAnswer) {
             LogUtils.log("correct answer - questions remaining " + Levels.CurrentLevel.Instance().problems.length);
-            Report.recordSuccess(selectedPrblem, selectedAnswer);
             $message.html('<i class="fa  fa-thumbs-up text-green"></i>' + ' +' + Levels.CurrentLevel.Instance().points).show().delay(1000).fadeOut();
             Levels.CurrentLevel.rewardPoints();
             Levels.CurrentLevel.removeLastProblem();
+            if(Report) {
+              Report.recordSuccess(selectedPrblem, selectedAnswer);
+            } else {
+              LogUtils.log("Report JS is probably not included");
+            }
         } else {
             LogUtils.log("incorrect answer - adding back");
-            Report.recordFailure(selectedPrblem, selectedAnswer);
             $message.html('<i class="fa  fa-times text-red"></i>').show().delay(1000).fadeOut();;
             Levels.CurrentLevel.moveProblemToEnd();
+            if(Report) {
+              Report.recordFailure(selectedPrblem, selectedAnswer);
+            } else {
+              LogUtils.log("Report JS is probably not included");
+            }
         }
         Levels.CurrentLevel.nextProblem();
         $("#answer").val('');
