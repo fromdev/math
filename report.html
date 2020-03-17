@@ -36,7 +36,22 @@ layout: post
                 <!-- Default box -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Report timeline</h3>
+                        <h3 class="box-title">Wrong Attempts timeline</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="report-wrong">
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">All Attempts timeline</h3>
                     </div>
                     <div class="box-body">
                         <div class="report">
@@ -76,6 +91,7 @@ layout: post
 <script type="text/javascript">
 
   $(document).ready(function () {
+    $(".report-wrong").html(Report.toTable('wrong'));
     $(".report").html(Report.toTable());
   });
 </script>
