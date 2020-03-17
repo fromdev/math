@@ -18,7 +18,7 @@ Report = {
     auditTrail.push({problem : problem, status: "wrong", inputAnswer : selectedAnswer, timestamp : Date.now()});
     StorageUtils.setItem("AUDIT",JSON.stringify(auditTrail));
   },
-  toTable : function() {
+  toTable : function(filter) {
     var html = '';
     var auditTrail = Report.readAuditTrail();
     if(auditTrail && auditTrail.length > 0) {
@@ -36,6 +36,7 @@ Report = {
       html+='<tr><th>Problem</th><th>Type</th><th>Attempt Result</th><th>Attempt Answer</th><th>Date [MM/DD/YYYY]</th></tr>';
       auditTrail.sort(function(a,b) {return (a.timestamp > b.timestamp) ? -1 : ((b.timestamp > a.timestamp) ? 1 : 0);} );
       auditTrail.forEach(function(row){
+          if(filter && row.status !== filter) return; 
           html+='<tr>';
           html+='<td>' + showProblem(row) + '</td>';
           html+='<td>' + row.problem.subtype + '</td>';
