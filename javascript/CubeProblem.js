@@ -1,6 +1,7 @@
 class CubeProblem {
   constructor(number) {
     this.number = number;
+    this.subtype = "CubeProblem";
     this.choiceArray = this.calculateChoices();
   }
 

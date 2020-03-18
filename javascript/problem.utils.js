@@ -20,6 +20,9 @@ Problems.createByType = {
     return new MultiplicationWordProblem(problem.first, problem.second, problem.problemStatement);
   },
   DivisionProblem: function(problem) {
-    return new DivisionProblem(problem.a, problem.b);
+    return new DivisionProblem(problem.first, problem.second);
+  },
+  CubeProblem: function(problem) {
+    return new CubeProblem(problem.number);
   }
 };

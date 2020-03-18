@@ -150,6 +150,20 @@ Levels.CurrentLevel = {
      var level = CurrentLevel.Instance();
      if(level.problems.length > 0) {
        var problem = level.problems.last();
+
+       const createProblemObject = function(problem) {
+         try {
+           return (Problems && Problems.createByType && Problems.createByType[problem.subtype] && problem) ?
+           Problems.createByType[problem.subtype](problem) : undefined;
+         } catch(e) {
+           LogUtils.log('Failed createProblemObject ' + e);
+           return undefined;
+         }
+       };
+        const newProb = createProblemObject(problem);
+
+        if(newProb) return newProb;
+
        if("Cube" == level.type) {
            return new CubeProblem(problem.number);
        }  else if ("Algebra" == level.type){
