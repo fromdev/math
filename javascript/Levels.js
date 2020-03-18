@@ -42,6 +42,15 @@ Levels.ALGEBRA = {
   "type" : "Algebra",
   "generator": Problems.Generators.algebraProblemGenerator
 };
+
+Levels.DIVISION = {
+  "id" : 1,
+  "choicesGiven":6,
+  "range" : {"start":0,"end":10},
+  "points" : 5,
+  "type" : "Division",
+  "generator": Problems.Generators.divisionProblemGenerator
+};
 Levels.FindGeneratorByType = function(level){
   if(level && level.type) {
     if(Levels.ALGEBRA.type == level.type) {
@@ -55,6 +64,9 @@ Levels.FindGeneratorByType = function(level){
     }
     if(Levels.TABLE.type == level.type) {
       return Problems.Generators.tableProblemGenerator;
+    }
+    if(Levels.DIVISION.type == level.type) {
+      return Problems.Generators.divisionProblemGenerator;
     }
     return Problems.Generators.allProblemGenerator;
   }

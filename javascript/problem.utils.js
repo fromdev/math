@@ -18,5 +18,8 @@ Problems.createByType = {
   },
   MultiplicationWordProblem: function(problem) {
     return new MultiplicationWordProblem(problem.first, problem.second, problem.problemStatement);
+  },
+  DivisionProblem: function(problem) {
+    return new DivisionProblem(problem.a, problem.b);
   }
 };

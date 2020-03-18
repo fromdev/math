@@ -64,6 +64,17 @@ Problems.Generators = {
     }
     return allProblems;
   },
+  divisionProblemGenerator : function(level) {
+    var tableProblems = [];
+    if(Levels.TABLE.type == level.type) {
+      for(var i = level.range.start; i < level.range.end;i++){
+        const a = RandomUtils.getRandomInt(1,25);
+        const b = RandomUtils.getRandomInt(1,25);
+        tableProblems.push(new DivisionProblem(a*b,b));
+      }
+    }
+    return tableProblems;
+  },
   defaultProblemGenerator : function(level) {
     LogUtils.log('No Generator: Using default' + level);
     var range = level.range;
