@@ -123,7 +123,7 @@ Levels.CurrentLevel = {
   },
   generateProblems : function(level) {
     //Use a default generator if not specified
-    level.generator = (level.generator) ? level.generator : Problems.Generators.defaultProblemGenerator;
+    level.generator = (level.generator) ? level.generator : Levels.FindGeneratorByType(level)  || Problems.Generators.defaultProblemGenerator;
     return level.generator(level);
   },
   initialize : function(level) {

@@ -24,7 +24,7 @@
                         </ul>
                     </li>
 
-                <li class="treeview" id="security-category">
+                <li class="treeview" id="division-category">
                         <a href="#">
                             <i class="fa fa-shield text-red"></i> <span>Division</span>
                             <span class="pull-right-container">
