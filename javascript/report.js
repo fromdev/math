@@ -29,14 +29,14 @@ Report = {
             : '';
           return (dp && dp.displayProblem) ? dp.displayProblem() : 'Cant Serialize: ' + (row.problem.subtype || 'Unknown');
         } catch(e) {
-          return 'Failed to show problem';
+          return 'Failed to show problem: missing dep?';
         }
       };
       html+='<table>';
       html+='<tr><th>Problem</th><th>Type</th><th>Attempt Result</th><th>Attempt Answer</th><th>Date [MM/DD/YYYY]</th></tr>';
       auditTrail.sort(function(a,b) {return (a.timestamp > b.timestamp) ? -1 : ((b.timestamp > a.timestamp) ? 1 : 0);} );
       auditTrail.forEach(function(row){
-          if(filter && row.status !== filter) return; 
+          if(filter && row.status !== filter) return;
           html+='<tr>';
           html+='<td>' + showProblem(row) + '</td>';
           html+='<td>' + row.problem.subtype + '</td>';
