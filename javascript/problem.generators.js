@@ -66,7 +66,7 @@ Problems.Generators = {
   },
   divisionProblemGenerator : function(level) {
     var tableProblems = [];
-    if(Levels.TABLE.type == level.type) {
+    if(Levels.DIVISION.type == level.type) {
       for(var i = level.range.start; i < level.range.end;i++){
         const a = RandomUtils.getRandomInt(1,25);
         const b = RandomUtils.getRandomInt(1,25);
