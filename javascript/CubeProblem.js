@@ -15,6 +15,10 @@ class CubeProblem {
     return this.number + " x " + this.number + " x " + this.number;
   }
 
+  id() {
+    return this.subtype + '-' + this.number;
+  }
+
   answer() {
     return this.number * this.number * this.number;
   }

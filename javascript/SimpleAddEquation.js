@@ -14,6 +14,9 @@ class SimpleAddEquation {
   displayProblem() {
     return "x + " + this.a + " = " + this.b;
   }
+  id() {
+    return this.subtype + '-' + this.a + '-' + this.b;
+  }
 
   answer() {
     return this.b  - this.a;

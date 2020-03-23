@@ -29,6 +29,10 @@ class MultiplicationWordProblem {
 
   }
 
+  id() {
+    return this.subtype + '-' + this.first + '-' + this.second;
+  }
+
   displayProblem() {
     return this.problemStatement;
   }

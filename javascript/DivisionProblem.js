@@ -16,6 +16,10 @@ class DivisionProblem {
     return this.first + " ÷ " + this.second;
   }
 
+  id() {
+    return this.subtype + '-' + this.first + '-' + this.second;
+  }
+
   answer() {
     return this.first / this.second;
   }

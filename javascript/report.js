@@ -10,12 +10,12 @@ Report = {
   },
    recordSuccess : function(problem, selectedAnswer) {
     var auditTrail = Report.readAuditTrail();
-    auditTrail.push({problem : problem, status: "correct", inputAnswer : selectedAnswer, timestamp : Date.now()});
+    auditTrail.push({problem : problem, id : problem.id(), status: "correct", inputAnswer : selectedAnswer, timestamp : Date.now()});
     StorageUtils.setItem("AUDIT",JSON.stringify(auditTrail));
   },
   recordFailure : function(problem, selectedAnswer){
     var auditTrail = Report.readAuditTrail();
-    auditTrail.push({problem : problem, status: "wrong", inputAnswer : selectedAnswer, timestamp : Date.now()});
+    auditTrail.push({problem : problem, id : problem.id(), status: "wrong", inputAnswer : selectedAnswer, timestamp : Date.now()});
     StorageUtils.setItem("AUDIT",JSON.stringify(auditTrail));
   },
   toTable : function(filter) {
