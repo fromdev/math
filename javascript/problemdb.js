@@ -8,8 +8,10 @@ ProblemDatabase = {
     }
     return problemDb || [];
   },
-   add : function(problem) {
-    if(!problem || !problem.id()) return;
+   add : function(prb) {
+    if(!prb || !prb.subtype || !Problems) return;
+    const problem = Problems.fromJSON(prb);
+    if(!problem) return;
     StorageUtils.setItem("PROBLEMDB" + '.' + problem.id(),JSON.stringify(problem));
     var allProblems = new Map(Report.findAll());
     allProblems.set(problem.id(), problem);

@@ -26,3 +26,15 @@ Problems.createByType = {
     return new CubeProblem(problem.number);
   }
 };
+
+Problems.fromJSON = function(problem) {
+  if(problem && problem.subtype) {
+    try {
+      return Problems.createByType[problem.subtype]();
+    } catch(e) {
+      LogUtils.log('Failed to createProblemObject ' + e);
+    }
+  }
+  LogUtils.log('Uknown object ');
+  return undefined;
+};
