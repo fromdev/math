@@ -30,7 +30,7 @@ Problems.createByType = {
 Problems.fromJSON = function(problem) {
   if(problem && problem.subtype) {
     try {
-      return Problems.createByType[problem.subtype]();
+      return Problems.createByType[problem.subtype](problem);
     } catch(e) {
       LogUtils.log('Failed to createProblemObject ' + e);
     }
