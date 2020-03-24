@@ -134,9 +134,9 @@ Levels.CurrentLevel = {
     if(level) {
       if(!level.problems || level.problems.length == 0) {
         level.problems = ArrayUtils.shuffle(Levels.CurrentLevel.generateProblems(level));
-        if(ProblemDatabase) {
-          ProblemDatabase.addAll(level.problems);
-        }
+      }
+      if(ProblemDatabase) {
+        ProblemDatabase.addAll(level.problems);
       }
       level.KEY = Levels.CurrentLevel.KEY;
       var lvlStr = JSON.stringify(level);
