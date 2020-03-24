@@ -1,0 +1,86 @@
+---
+title: List of all Math Problems For Online Practice | FromDev
+layout: post
+---
+<html>
+
+<head>
+   <link rel="canonical" href="http://math.imustread.com">
+   {% include common-meta %}
+   {% feed_meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is the report page for various mathematics tools practice problems." />
+    <meta name="keywords" content="report,online,tool,mathematics,math,learning,opensource" />
+
+    {% include theme-css %}
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+{% include theme-header %}
+{% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>All Math Problems Index</h1>
+            </section>
+            <!-- Main content -->
+              <section class="content">
+                <!-- Default box -->
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">List of various math problems available on this tool.</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="problems">
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+{% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+{% include theme-bottom-js %}
+
+<script type="text/javascript" src="https://math.imustread.com/javascript/json2.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/fromdev-utils.js?v=5"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/MultiplicationProblem.js?1"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/MultiplicationWordProblem.js?1"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/CubeProblem.js?1"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleAddEquation.js?1"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleSubtractEquation.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleMultiplyEquation.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleDivideEquation.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/DivisionProblem.js?v=12"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/problem.generators.js?2"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/problem.utils.js?1"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/problemdb.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/Levels.js?5"></script>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+    $(".problems").html(ProblemDatabase.toTable());
+  });
+</script>
+
+</body>
+</html>
