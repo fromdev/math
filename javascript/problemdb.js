@@ -9,10 +9,17 @@ ProblemDatabase = {
     return problemDb || [];
   },
    add : function(problem) {
+    if(!problem || !problem.id()) return;
     StorageUtils.setItem("PROBLEMDB" + '.' + problem.id(),JSON.stringify(problem));
     var allProblems = new Map(Report.findAll());
     allProblems.set(problem.id(), problem);
     StorageUtils.setItem("PROBLEMDB",JSON.stringify(Array.from(allProblems.entries())));
+  },
+   addAll : function(problems) {
+    if(!problems || !problems.length) return;
+    problems.forEach((prob, i) => {
+      ProblemDatabase.add(prob);
+    });
   },
    findById : function(id) {
      var problem =  StorageUtils.getItem("PROBLEMDB" + '.' + id);
