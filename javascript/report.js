@@ -50,5 +50,12 @@ Report = {
     }
 
     return html;
+  },
+  findByStatus: function(status) {
+    var auditTrail = Report.readAuditTrail();
+    if(status && auditTrail && auditTrail.length > 0) {
+      return auditTrail.filter(function(entry){return status === entry.status;});
+    }
+    return auditTrail;
   }
 };
