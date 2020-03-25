@@ -39,10 +39,9 @@ ProblemDatabase = {
     var html = '';
     var problemDb = ProblemDatabase.findAll();
     if(problemDb && problemDb.length > 0) {
-      const showProblem = function(row) {
+      const showProblem = function(problem) {
         try {
-          const dp = (Problems && Problems.createByType && row.problem && row.problem.subtype && Problems.createByType[row.problem.subtype])
-            ? Problems.createByType[row.problem.subtype](row.problem)
+          const dp = (Problems) ? Problems.fromJSON(problem)
             : '';
           return (dp && dp.displayProblem) ? dp.displayProblem() : 'Cant Serialize: ' + (row.problem.subtype || 'Unknown');
         } catch(e) {
