@@ -10,12 +10,17 @@ ProblemDatabase = {
   },
    add : function(prb) {
     if(!prb || !prb.subtype || !Problems) return;
-    const problem = Problems.fromJSON(prb);
-    if(!problem) return;
-    StorageUtils.setItem("PROBLEMDB" + '.' + problem.id(),JSON.stringify(problem));
-    var allProblems = new Map(Report.findAll());
-    allProblems.set(problem.id(), problem);
-    StorageUtils.setItem("PROBLEMDB",JSON.stringify(Array.from(allProblems.entries())));
+    try {
+      const problem = Problems.fromJSON(prb);
+      if(!problem) return;
+      StorageUtils.setItem("PROBLEMDB" + '.' + problem.id(),JSON.stringify(problem));
+      var allProblems = new Map(Report.findAll());
+      allProblems.set(problem.id(), problem);
+      StorageUtils.setItem("PROBLEMDB",JSON.stringify(Array.from(allProblems.entries())));
+    } catch(e) {
+      return false;
+    }
+    return true;
   },
    addAll : function(problems) {
     if(!problems || !problems.length) return;
