@@ -14,7 +14,7 @@ ProblemDatabase = {
       const problem = Problems.fromJSON(prb);
       if(!problem) return;
       StorageUtils.setItem("PROBLEMDB" + '.' + problem.id(),JSON.stringify(problem));
-      var allProblems = new Map(Report.findAll());
+      var allProblems = new Map(ProblemDatabase.findAll());
       allProblems.set(problem.id(), problem);
       StorageUtils.setItem("PROBLEMDB",JSON.stringify(Array.from(allProblems.entries())));
     } catch(e) {
