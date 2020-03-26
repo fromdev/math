@@ -24,6 +24,9 @@ Problems.createByType = {
   },
   CubeProblem: function(problem) {
     return new CubeProblem(problem.number);
+  },
+  ParenthesisEquation: function(problem) {
+    return new ParenthesisEquation(problem.a,problem.b,problem.c,problem.d,problem.e);
   }
 };
 
