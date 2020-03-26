@@ -43,6 +43,11 @@ Problems.Generators = {
         b = a * RandomUtils.getRandomInt(1,5);
         problems.push(new SimpleMultiplyEquation(a,b));
         problems.push(new SimpleDivideEquation(a,b));
+        const d = RandomUtils.getRandomInt(2,9);
+        const e = RandomUtils.getRandomInt(1,9);
+        const cMinusE = RandomUtils.getRandomInt(1,5) * (b*d) + a*d;
+        const c = cMinusE + e;
+        problems.push(new ParenthesisEquation(a,b,c,d,e));
       }
     }
     return problems;
