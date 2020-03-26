@@ -16,7 +16,7 @@ class ParenthesisEquation {
   }
 
   displayProblem() {
-    return this.c + this.d * "( " + this.a + "x " + (this.b < 0) ? " - " : " + " + this.b + ") = " + this.e;
+    return `${this.c} + ${this.d}(${this.a}X + ${this.b}) = ${this.e}`;
   }
   id() {
     return this.subtype + '-' + this.a + '-' + this.b;
