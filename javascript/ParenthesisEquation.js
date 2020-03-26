@@ -19,7 +19,7 @@ class ParenthesisEquation {
     return `${this.c} + ${this.d}(${this.a}X + ${this.b}) = ${this.e}`;
   }
   id() {
-    return this.subtype + '-' + this.a + '-' + this.b;
+    return this.subtype + '-' + this.a + '-' + this.b + '-' + this.c + '-' + this.d + '-' + this.e;
   }
   answer() {
     return (this.e - this.c - (this.d * this.b)) / (this.d * this.a);
