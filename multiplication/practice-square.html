@@ -1,5 +1,5 @@
 ---
-title: Practice Math Number Squares Online
+title: Practice Math Multiplication Tables Online
 layout: post
 ---
 <html>
@@ -8,7 +8,7 @@ layout: post
     <title>{{ page.title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="This is open source  tool for everyone to practice and learn square of a number." />
+    <meta name="description" content="This is open source  multiplication tool for everyone to practice and learn multiplication." />
     <meta name="keywords" content="online,tool,math,multiplication,practice,opensource" />
 
     {% include theme-css %}
@@ -114,13 +114,13 @@ layout: post
 <script type="text/javascript">
     var onScreenDebug = false;
     var debug = false;
-    Levels.CurrentLevel.KEY = "MULTIPLICATION.PRACTICE";
+    Levels.CurrentLevel.KEY = "SQUARE.PRACTICE";
 Array.prototype.last = function(x) { return this[this.length - Math.abs(x || 1)]; };
 
 
 var CurrentLevel = Levels.CurrentLevel;
 
-CurrentLevel.initialize(checkLevelOverride(Levels.TABLE));
+CurrentLevel.initialize(checkLevelOverride(Levels.SQUARE));
 
 $(document).ready(function () {
   $(".answerChoice").click(function(){
