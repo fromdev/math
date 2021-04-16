@@ -52,6 +52,19 @@ Report = {
 
     return html;
   },
+  toPoints : function() {
+    var html = '';
+    var auditTrail = Report.readAuditTrail();
+    if(auditTrail && auditTrail.length > 0) {
+      auditTrail.sort(function(a,b) {return (a.timestamp > b.timestamp) ? -1 : ((b.timestamp > a.timestamp) ? 1 : 0);} );
+      const ids = auditTrail.map(row => row.id);
+      const uniques = new Set(ids);
+      html += `<div>Unique Questions: ${uniques}</div>`;
+      html += `<div>Redeemable Points: ${uniques/10.0}</div>`;
+    }
+
+    return html;
+  },
   findByStatus: function(status) {
     var auditTrail = Report.readAuditTrail();
     if(status && auditTrail && auditTrail.length > 0) {
