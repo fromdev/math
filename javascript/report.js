@@ -60,7 +60,7 @@ Report = {
       const ids = auditTrail.map(row => row.id);
       const uniques = new Set(ids);
       html += `<div>Unique Questions: ${uniques.size}</div>`;
-      html += `<div>Redeemable Coins: ${uniques.size}</div>`;
+      html += `<div>Redeemable Coins: ${uniques.size*10}</div>`;
     } 
 
     return html;
