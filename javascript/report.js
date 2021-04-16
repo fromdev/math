@@ -59,9 +59,9 @@ Report = {
       auditTrail.sort(function(a,b) {return (a.timestamp > b.timestamp) ? -1 : ((b.timestamp > a.timestamp) ? 1 : 0);} );
       const ids = auditTrail.map(row => row.id);
       const uniques = new Set(ids);
-      html += `<div>Unique Questions: ${uniques}</div>`;
-      html += `<div>Redeemable Points: ${uniques/10.0}</div>`;
-    }
+      html += `<div>Unique Questions: ${uniques.size}</div>`;
+      html += `<div>Redeemable Points: ${uniques.size/10.0}</div>`;
+    } 
 
     return html;
   },
