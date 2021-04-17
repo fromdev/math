@@ -55,6 +55,7 @@ Report = {
   toPoints : function() {
     var html = '';
     const _auditTrail = Report.readAuditTrail();
+    const filter = 'correct';
     const auditTrail = _auditTrail.filter(row => row.status === filter);
     if(auditTrail && auditTrail.length > 0) {
       auditTrail.sort(function(a,b) {return (a.timestamp > b.timestamp) ? -1 : ((b.timestamp > a.timestamp) ? 1 : 0);} );
