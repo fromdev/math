@@ -88,33 +88,5 @@ layout: post
     </div>
     <!-- ./wrapper -->
 {% include theme-bottom-js %}
-
-<script type="text/javascript" src="https://math.imustread.com/javascript/json2.js"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/fromdev-utils.js?v=5"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/MultiplicationProblem.js?1"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/MultiplicationWordProblem.js?1"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/CubeProblem.js?1"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleAddEquation.js?1"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleSubtractEquation.js"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleMultiplyEquation.js"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleDivideEquation.js"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/ParenthesisEquation.js"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/DivisionProblem.js?v=12"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/problem.generators.js?2"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/problem.utils.js?1"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/report.js?1"></script>
-<script type="text/javascript" src="https://math.imustread.com/javascript/Levels.js?5"></script>
-
-<script type="text/javascript">
-
-  $(document).ready(function () {
-    $("#points").html(Report.toPoints());
-    $("#wrong-attempts").html('Wrong Attempts Count: ' + Report.findByStatus('wrong').length);
-    $("#all-attempts").html('All Attempts Count: ' + Report.findByStatus().length);
-    $(".report-wrong").html(Report.toTable('wrong'));
-    $(".report").html(Report.toTable());
-  });
-</script>
-
 </body>
 </html>
