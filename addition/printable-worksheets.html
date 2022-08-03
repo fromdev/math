@@ -1,0 +1,120 @@
+---
+title: Download Printable Worksheets for Addition Practice At Grade Level | iMustRead
+layout: post
+---
+<html>
+
+<head>
+   <link rel="canonical" href="http://math.imustread.com">
+   {% include common-meta %}
+   {% feed_meta %}
+    <title>{{ page.title }}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="This is the worksheet download page for addition worksheets." />
+    <meta name="keywords" content="worksheet,online,download,mathematics,math,learning,opensource,pdf" />
+
+    {% include theme-css %}
+    {% include ie-fixes %}
+</head>
+
+<body class="hold-transition skin-green sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+{% include theme-header %}
+{% include theme-sidebar %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>Download Worksheets for Math Addition Practice </h1>
+            </section>
+            <!-- Main content -->
+              <section class="content">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Kindergarten</h3>
+                    </div>
+                    <div class="box-body">
+                        <div id="points">
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <!-- Default box -->
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" id="wrong-attempts">Grade 1</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="report-wrong">
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" id="all-attempts">Grade 2</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="report">
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <!-- /.box -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+{% include theme-footer %}
+    </div>
+    <!-- ./wrapper -->
+{% include theme-bottom-js %}
+
+<script type="text/javascript" src="https://math.imustread.com/javascript/json2.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/fromdev-utils.js?v=5"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/MultiplicationProblem.js?1"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/MultiplicationWordProblem.js?1"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/CubeProblem.js?1"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleAddEquation.js?1"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleSubtractEquation.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleMultiplyEquation.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/SimpleDivideEquation.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/ParenthesisEquation.js"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/DivisionProblem.js?v=12"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/problem.generators.js?2"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/problem.utils.js?1"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/report.js?1"></script>
+<script type="text/javascript" src="https://math.imustread.com/javascript/Levels.js?5"></script>
+
+<script type="text/javascript">
+
+  $(document).ready(function () {
+    $("#points").html(Report.toPoints());
+    $("#wrong-attempts").html('Wrong Attempts Count: ' + Report.findByStatus('wrong').length);
+    $("#all-attempts").html('All Attempts Count: ' + Report.findByStatus().length);
+    $(".report-wrong").html(Report.toTable('wrong'));
+    $(".report").html(Report.toTable());
+  });
+</script>
+
+</body>
+</html>
